@@ -23,35 +23,34 @@
       <v-spacer></v-spacer>
       
          
-     <v-text-field
+    <v-text-field
       label="search"
       prepend-inner-icon="mdi-magnify"
       dense
       style="padding-top:25px;"
-     ></v-text-field>
+    ></v-text-field>
      
-          <v-menu
-      transition="slide-x-transition"
+    <v-menu
+      transition="slide-y-transition"
       bottom
-      right
+      left
       offset-y
+      align="center"
     >
       <template v-slot:activator="{ on, attrs }">
-         <v-btn
+        <v-btn
           class="white--text ma-5"
-            v-bind="attrs"
+          v-bind="attrs"
           v-on="on"
-        text
-      >
+          text
+        >
         <v-icon large>mdi-account</v-icon>
       </v-btn> 
       </template>
 
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-        >
+      <v-list dense color="#fff">
+        <v-list-item v-for="(item, i) in items" :key="i" style="width: 200px; back;background-color: #fff" color="#fff">
+          <v-list-item-icon><v-icon>{{item.icon}}</v-icon></v-list-item-icon>
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
       </v-list>
@@ -69,10 +68,8 @@
    export default {
     data: () => ({
       items: [
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me 2' },
+        { title: '내 정보', icon: 'mdi-briefcase-outline' },
+        { title: '로그아웃', icon: 'mdi-account-arrow-right-outline' },
       ],
     }),
   }

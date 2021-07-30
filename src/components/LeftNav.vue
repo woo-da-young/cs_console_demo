@@ -28,6 +28,7 @@
     data () {
       return {
         menuList: [
+          {icon: 'mdi-home', title: '홈'},
           {icon: 'mdi-folder', title: '정책관리'},
           {icon: 'mdi-shield-check', title: '보안감사'},
           {icon: 'mdi-hammer-wrench', title: '관리도구'},
