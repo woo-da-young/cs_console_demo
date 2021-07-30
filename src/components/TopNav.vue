@@ -24,18 +24,41 @@
       
          
      <v-text-field
-            label="search"
-            prepend-inner-icon="mdi-magnify"
-            dense
-            style="padding-top:25px;"
-          ></v-text-field>
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
+      label="search"
+      prepend-inner-icon="mdi-magnify"
+      dense
+      style="padding-top:25px;"
+     ></v-text-field>
+     
+          <v-menu
+      transition="slide-x-transition"
+      bottom
+      right
+      offset-y
+    >
+      <template v-slot:activator="{ on, attrs }">
+         <v-btn
+          class="white--text ma-5"
+            v-bind="attrs"
+          v-on="on"
         text
       >
         <v-icon large>mdi-account</v-icon>
       </v-btn> 
+      </template>
+
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+
+
+
     </v-app-bar>
 
 
@@ -43,13 +66,15 @@
 
 
 <script>
-  
-  export default {
-    data () {
-      return {
-        
-      }
-    },
+   export default {
+    data: () => ({
+      items: [
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me 2' },
+      ],
+    }),
   }
 </script>
 
