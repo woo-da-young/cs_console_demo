@@ -1,0 +1,254 @@
+<template>
+
+  <v-app style="background-color: #F9FBFD;">
+    
+    <!-- 상단바 -->
+    <v-app-bar
+      app
+      dense
+      
+      fixed
+      color="#0575F3"
+      height="40px"
+    >
+      <v-icon @click.stop="drawer = !drawer" color="#fff">mdi-format-list-bulleted</v-icon>
+      <div class="logo-sheildd-flex align-center" >
+        <span style="padding-left:10px;color:#fff">SHIELD DRL 웹콘솔</span>
+      </div>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-text-field
+        prepend-inner-icon="mdi-magnify"
+        style="padding-top:15px;"            
+        dense
+        background-color="#B3D6F2"
+      ></v-text-field>
+      <v-btn
+        text
+        color="#ccc"
+      >
+        <v-icon size="35">mdi-account</v-icon>
+      </v-btn> 
+    </v-app-bar>
+
+    <!-- 네비게이션 서랍바 -->
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      bottom
+      temporary
+      
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item v-for="item in navs" :key="item.text">
+            <v-list-item-title>{{item.text}}</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
+
+
+    <v-main>
+      <!-- 사이트맵?? -->
+      <v-container fluid   >
+        <div style="color:#9AADD1;font-size:0.8rem;padding-bottom:10px;">홈 > user1 > 암호화 정책</div>
+        <span><v-icon x-large>mdi-account</v-icon></span><span style="font-size:1.6rem;font-weight:bold;"> USER1</span>
+        <v-divider></v-divider>
+
+        <!-- 메뉴 리스트 -->
+        <v-card
+          width="300px"
+          style="float:left; background-color:#F9FBFD"
+          flat
+          height="100vh"
+          background-color="#F9FBFD"
+        >
+          <v-list height="100vh;" color="#F9FBFD">
+            <v-list-group
+              v-for="item in items"
+              :key="item.title"
+              v-model="item.active"
+              :prepend-icon="item.action"
+              no-action
+              style="background-color:#F9FBFD;"
+            >
+              <template v-slot:activator >
+                <v-list-item-content >
+                  <v-list-item-title v-text="item.title" ></v-list-item-title>
+                </v-list-item-content>
+              </template>
+
+              <v-list-item
+                style="background-color:#F9FBFD;"
+                v-for="child in item.items"
+                :key="child.title"
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-text="child.title"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+          </v-list>
+        </v-card>
+        
+        <!-- 메인 화면 -->
+        <div style="width:(100% - 300px);">
+          
+          <v-row>
+            <v-col cols="12" style="margin-top:10px; ">
+              <!-- <v-divider style="height:5px"></v-divider> -->
+              <v-row style="border-top: 2px solid #ccc;border-bottom: 1px solid #ccc; margin-top:10px; ">
+                <v-col cols="3" style="padding: 0"><v-btn text style="padding: 0">적용</v-btn></v-col><v-col cols="9" style="padding: 0"><v-btn text >취소</v-btn></v-col>
+              </v-row>
+            </v-col>
+            
+          </v-row>
+          <!-- 1번째 줄 -->
+          <v-row style="padding-top:20px;">
+            <v-col cols="6" >
+              <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
+              <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <v-select
+                :items="selectList"
+                dense
+                hide-details
+                style="width:50%; padding-bottom: 20px;"
+              ></v-select>
+            </v-col>
+            <v-col  cols="6" >
+              <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
+              <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <v-select
+                :items="selectList"
+                dense
+                filled
+                hide-details
+                style="width:50%; padding-bottom: 20px;"
+              ></v-select>
+              
+            </v-col>
+          </v-row>
+          <v-divider ></v-divider>
+
+          <!-- 1번째 줄 -->
+          <v-row style="padding-top:20px;">
+            <v-col v-for="n in 2" :key="n" cols="6" >
+              <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
+              <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <v-select
+                :items="selectList"
+                dense
+                hide-details
+                outlined
+                style="width:50%; padding-bottom: 20px;"
+              ></v-select>
+            </v-col>
+          </v-row>
+          <v-divider ></v-divider>
+
+          <!-- 3번째 줄 -->
+          <v-row style="padding-top:20px;">
+            <v-col v-for="n in 2" :key="n" cols="6" >
+              <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
+              <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <v-select
+                :items="selectList"
+                dense
+                hide-details
+                filled
+                rounded
+                style="width:50%; padding-bottom: 20px;"
+              ></v-select>
+            </v-col>
+          </v-row>
+          <v-divider ></v-divider>
+
+          
+          
+
+        </div>
+
+          
+      </v-container>    
+    </v-main>  
+
+  </v-app>
+</template>
+
+<script>
+
+
+
+
+  export default {
+    data () {
+      return {
+        drawer: false,
+        mini: true,
+        selectedItem: 1,
+        navs: [
+          { text: '정책관리', icon: 'mdi-folder' },
+          { text: '보안감사', icon: 'mdi-shield-check' },
+          { text: '관리도구', icon: 'mdi-hammer-wrench' },
+          { text: '관리자정책', icon: 'mdi-clipboard-account' },
+          { text: '환경설정', icon: 'mdi-cog-outline' },
+        ],
+        items: [
+        {
+          action: 'mdi-ticket',
+          items: [{ title: 'List Item' }],
+          title: 'Attractions',
+        },
+        {
+          action: 'mdi-silverware-fork-knife',          
+          items: [
+            { title: 'Breakfast & brunch' },
+            { title: 'New American' },
+            { title: 'Sushi' },
+          ],
+          title: 'Dining',
+        },
+        {
+          action: 'mdi-school',
+          items: [{ title: 'List Item' }],
+          title: 'Education',
+        },
+        {
+          action: 'mdi-run',
+          items: [{ title: 'List Item' }],
+          title: 'Family',
+        },
+        {
+          action: 'mdi-bottle-tonic-plus',
+          items: [{ title: 'List Item' }],
+          title: 'Health',
+        },
+        {
+          action: 'mdi-content-cut',
+          items: [{ title: 'List Item' }],
+          title: 'Office',
+        },
+        {
+          action: 'mdi-tag',
+          items: [{ title: 'List Item' }],
+          title: 'Promotions',
+        },
+      ],
+      group:'',
+      selectList: ['문서편집기 저장시(MS 오피스만 지원)', '문서편집기 종료시'],
+      }
+    },
+  }
+</script>
