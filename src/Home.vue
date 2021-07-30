@@ -1,6 +1,6 @@
 <template>
 
-  <v-app style="background-color: #F9FBFD;">
+  <v-app class="app-main softcamp-font-regulars">
     
     <!-- 상단바 -->
     <v-app-bar
@@ -13,7 +13,7 @@
     >
       <v-icon @click.stop="drawer = !drawer" color="#fff">mdi-format-list-bulleted</v-icon>
       <div class="logo-sheildd-flex align-center" >
-        <span style="padding-left:10px;color:#fff">SHIELD DRL 웹콘솔</span>
+        <span style="padding-left:10px;color:#fff">SHIELD DRM 웹콘솔</span>
       </div>
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
@@ -63,7 +63,7 @@
     <v-main>
       <!-- 사이트맵?? -->
       <v-container fluid   >
-        <div style="color:#9AADD1;font-size:0.8rem;padding-bottom:10px;">홈 > user1 > 암호화 정책</div>
+        <div style="color:#0575F3;font-size:14px;padding-bottom:10px;">홈 <span class="nav-divider">></span> user1 <span class="nav-divider">></span>  암호화 정책</div>
         <span><v-icon x-large>mdi-account</v-icon></span><span style="font-size:1.6rem;font-weight:bold;"> USER1</span>
         <v-divider></v-divider>
 
@@ -208,8 +208,7 @@
         items: [
         {
           action: 'mdi-ticket',
-          items: [{ title: 'List Item' }],
-          title: 'Attractions',
+          title: '기본정보',
         },
         {
           action: 'mdi-silverware-fork-knife',          
@@ -218,32 +217,47 @@
             { title: 'New American' },
             { title: 'Sushi' },
           ],
-          title: 'Dining',
+          title: '강제권한',
         },
         {
           action: 'mdi-school',
-          items: [{ title: 'List Item' }],
-          title: 'Education',
+          items: [
+            { title: '기본암호화 정책' },
+            { title: '강제암호화 정책' },
+          ],
+          title: '암호화 정책',
         },
         {
           action: 'mdi-run',
           items: [{ title: 'List Item' }],
-          title: 'Family',
+          title: '프로파일',
         },
         {
           action: 'mdi-bottle-tonic-plus',
           items: [{ title: 'List Item' }],
-          title: 'Health',
+          title: 'APP제어',
         },
         {
           action: 'mdi-content-cut',
           items: [{ title: 'List Item' }],
-          title: 'Office',
+          title: '하위관리자',
         },
         {
           action: 'mdi-tag',
           items: [{ title: 'List Item' }],
-          title: 'Promotions',
+          title: 'PC 보안',
+        },
+        {
+          action: 'mdi-tag',
+          title: '라이선스 정책',
+        },
+        {
+          action: 'mdi-tag',
+          title: '애드인 정책',
+        },
+        {
+          action: 'mdi-tag',
+          title: 'Custom 정책',
         },
       ],
       group:'',
@@ -252,6 +266,15 @@
     },
   }
 </script>
-<style scoped>
-
+<style>
+.softcamp-font-regular {
+    font-family: az_ea_font,'Segoe UI',az_font,system-ui,-apple-system,BlinkMacSystemFont,Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+    font-weight: 400;
+}
+.app-main {
+  background-color: #F9FBFD;
+}
+.nav-divider{
+  color:gray;
+}
 </style>
