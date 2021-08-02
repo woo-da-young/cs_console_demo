@@ -23,7 +23,7 @@
           <v-col cols="10" style="padding:30px;">
             <v-card class="mx-auto">
               <v-list-item>
-                <v-list-item-content style="font-size:1.4rem; ">                                          
+                <v-list-item-content style="font-size:1.4rem; font-weight:bold">                                          
                   <v-row align="center" justify="space-around">
                     <v-col>기본 암호화 정책</v-col>
                     <v-col align="right" justify="space-around">  
@@ -110,7 +110,7 @@
                 <v-col style="padding-top:30px;" >
                     <v-card>
                       <v-list-item>
-                        <v-list-item-content style="font-size:1.4rem; ">
+                        <v-list-item-content style="font-size:1.4rem; font-weight:bold ">
                           <v-row align="center" justify="space-around">
                             <v-col cols="8">암호화 가능 범주</v-col>
                             <v-col cols="4" align="right" justify="space-around">  
@@ -231,7 +231,7 @@
                 <v-col style="padding-top:30px;">
                   <v-card>
                     <v-list-item>
-                      <v-list-item-content style="font-size:1.4rem; ">
+                      <v-list-item-content style="font-size:1.4rem; font-weight:bold">
                           <v-row align="center" justify="space-around" >
                             <v-col cols="8">접근대상 지정 그룹</v-col>
                             <v-col cols="4" align="right" justify="space-around">
