@@ -367,11 +367,4 @@ import LeftNav from '../src/components/LeftNav.vue'
 </script>
 
 <style>
-  input.chcheck[type="checkbox"] {position: absolute; clip: rect(0,0,0,0); }
-input.chcheck[type="checkbox"] + label{ color: #fff; line-height: 20px; font-size: 14px;}
-input.chcheck[type="checkbox"] + label:before {content: '\a0';display: inline-block;
-  width: 20px;height: 20px;margin-right: 10px;border-radius: 3px;
-  background: #ccc;color:#eee; line-height:20px;  text-align:center;}
-input.chcheck[type="checkbox"]:checked + label:before {content: '\2713';
-  background: linear-gradient(45deg, #03a9f4, #0341a5); color:#fff}
 </style>

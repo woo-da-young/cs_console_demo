@@ -38,23 +38,58 @@
         offset-y
         align="center"
       >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          class="white--text ma-5"
-          v-bind="attrs"
-          v-on="on"
-          text
-        >
-        <v-icon size="35">mdi-account</v-icon>
-      </v-btn> 
-      </template>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="white--text ma-5"
+            v-bind="attrs"
+            v-on="on"
+            text
+          >
+          <v-icon size="35">mdi-account</v-icon>
+        </v-btn> 
+        </template>
 
-      <v-list dense color="#fff">
+        <v-card
+          class="mx-auto"
+          max-width="344"
+          outlined
+        > 
+
+          <v-list-item three-line>
+            <v-list-item-avatar
+              tile
+              size="80"
+              color="grey"
+            ></v-list-item-avatar>
+            <v-list-item-content>
+              <div class="text-overline mb-4">
+                OVERLINE
+              </div>
+              <v-list-item-title class="text-h5 mb-1">
+                Headline 5
+              </v-list-item-title>
+              <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+            </v-list-item-content>
+
+            
+          </v-list-item>
+
+          <v-card-actions>
+            <v-btn
+              outlined
+              rounded
+              text
+            >
+              Button
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      <!-- <v-list dense color="#fff">
         <v-list-item v-for="(item, i) in myItems" :key="i" style="width: 200px; back;background-color: #fff" color="#fff">
           <v-list-item-icon><v-icon>{{item.icon}}</v-icon></v-list-item-icon>
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
-      </v-list>
+      </v-list> -->
     </v-menu>
     </v-app-bar>
 
@@ -193,8 +228,13 @@
           <!-- 1번째 줄 -->
           <v-row class="contents_layout">
             <v-col cols="6" >
-              <div class="contents_title">암호화 시점</div>
-              <div class="contents_comment">보안문서 생성시 암호화 시점을 설정 할 수 있습니다.</div>
+              <!-- <div class="contents_title">암호화 시점</div>
+              <div class="contents_comment">보안문서 생성시 암호화 시점을 설정 할 수 있습니다.</div> -->
+              <v-tooltip bottom :open-on-hover="false">
+                <!-- <template v-slot:activator="{ on, attrs }">암호화 시점<v-icon  color="#47B8F5" v-bind="attrs" v-on="on" right>mdi-alert-circle-outline</v-icon></template> -->
+                <template #activator="{ on }">암호화 시점<v-icon  color="#47B8F5" @click="on.click" right>mdi-alert-circle-outline</v-icon></template>
+                <span >보안문서 생성시 암호화 시점을 설정 할 수 있습니다.</span>
+              </v-tooltip>
               <v-select
                 :items="selectList"
                 dense
@@ -661,6 +701,7 @@
       dialog2 : false,
       listOn: 1,
       subListOn: 1,
+      tooltip1: false
       }
     },
   }
