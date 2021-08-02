@@ -49,40 +49,17 @@
         </v-btn> 
         </template>
 
-        <v-card
-          class="mx-auto"
-          max-width="344"
-          outlined
-        > 
-
-          <v-list-item three-line>
-            <v-list-item-avatar
-              tile
-              size="80"
-              color="grey"
-            ></v-list-item-avatar>
+        <v-card class="mx-auto" max-width="344" outlined > 
+          <v-list-item><div class="text-overline">SOFTCAMP</div></v-list-item>
+          <v-list-item two-line>
+            <v-list-item-avatar size="90" color="primary"> <span class="white--text text-h5">관리자</span></v-list-item-avatar>
             <v-list-item-content>
-              <div class="text-overline mb-4">
-                OVERLINE
-              </div>
-              <v-list-item-title class="text-h5 mb-1">
-                Headline 5
-              </v-list-item-title>
-              <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+              <div class="text-overline">관리자</div>
+              <v-list-item-title class="mb-1">Admin@softcamp.co.kr</v-list-item-title>
+              <v-list-item-subtitle><a href="#">계정정보보기</a></v-list-item-subtitle>
             </v-list-item-content>
-
-            
           </v-list-item>
-
-          <v-card-actions>
-            <v-btn
-              outlined
-              rounded
-              text
-            >
-              Button
-            </v-btn>
-          </v-card-actions>
+           <v-list-item><div style="width: 100%"><v-btn style="background-color:#eee;" text width="100%">로그아웃</v-btn></div> </v-list-item>
         </v-card>
       <!-- <v-list dense color="#fff">
         <v-list-item v-for="(item, i) in myItems" :key="i" style="width: 200px; back;background-color: #fff" color="#fff">
