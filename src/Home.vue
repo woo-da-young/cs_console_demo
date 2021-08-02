@@ -27,12 +27,37 @@
         dense
         background-color="#B3D6F2"
       ></v-text-field>
-      <v-btn
+      <!-- <v-btn
         text
         color="#ccc"
       >
         <v-icon size="35">mdi-account</v-icon>
+      </v-btn>  -->
+      <v-menu
+        transition="slide-y-transition"
+        bottom
+        left
+        offset-y
+        align="center"
+      >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          class="white--text ma-5"
+          v-bind="attrs"
+          v-on="on"
+          text
+        >
+        <v-icon size="35">mdi-account</v-icon>
       </v-btn> 
+      </template>
+
+      <v-list dense color="#fff">
+        <v-list-item v-for="(item, i) in myItems" :key="i" style="width: 200px; back;background-color: #fff" color="#fff">
+          <v-list-item-icon><v-icon>{{item.icon}}</v-icon></v-list-item-icon>
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
     </v-app-bar>
 
     <!-- 네비게이션 서랍바 -->
@@ -148,8 +173,7 @@
               <div class="contents_title">단순 암호화 사용</div>
               <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
               <v-switch
-                v-model="switch1"
-                inset 
+                v-model="switch1" 
                 hide-details                
                 class="v-switch-style"
               >
@@ -157,6 +181,9 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>         
             </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-row class="contents_layout">
             <!-- 2 -->
             <v-col cols="6" >
               <div class="contents_title">폴더내 파일 암호화</div>
@@ -181,6 +208,9 @@
                 class="v-select-style"
               ></v-select>       
             </v-col>
+            </v-row>
+          <v-divider></v-divider>
+          <v-row class="contents_layout">
             <!-- 3 -->
             <v-col cols="6" >
               <div class="contents_title">MAC 문서 오픈시 생성자 권한 무시</div>
@@ -200,7 +230,7 @@
               <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
               <v-switch
                 v-model="switch4"
-                inset 
+                 
                 hide-details                
                 class="v-switch-style"
               >
@@ -208,12 +238,13 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>     
             </v-col>
+          </v-row>
+          <v-divider></v-divider>        
 
-            <v-divider ></v-divider>
-
+          <v-row>
             <v-col cols="6" >
             <!-- <v-container> -->
-                    <v-card>
+                    <v-card style="background-color:#F9FBFD" >
                       <v-list-item>
                         <v-list-item-content style="font-size:1.4rem; ">
                             <v-row
@@ -225,7 +256,7 @@
                                 
                                 <v-dialog v-model="dialog" persistent max-width="800">
                                   <template v-slot:activator="{ on, attrs }">
-                                    <v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
+                                    <v-btn color="primary" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
                                   </template>
                                   <v-card >
                                     <v-card-title class="text-h5">범주 선택</v-card-title>
@@ -303,12 +334,13 @@
                             </v-row>
                           </v-list-item-content>
                         </v-list-item>
-
-                    </v-card>
+                  
+                    </v-card> 
           <!-- </v-container> -->
             </v-col>
-
-          </v-row>
+            </v-row>
+            
+          
 
 
           
@@ -410,36 +442,36 @@
             { title: '기타' },
           ],
           title: '프로파일',
-        },
-        {
-          action: 'mdi-content-cut',
-          title: '하위관리자',
-        },
-        {
-          action: 'mdi-tag',
-          title: 'PC 보안',
-        },
-        {
-          action: 'mdi-tag',
-          title: '라이선스 정책',
-        },
-        {
-          action: 'mdi-tag',
-          title: '애드인 정책',
-        },
-        {
-          action: 'mdi-tag',
-          title: 'Custom 정책',
-        },
-      ],
-      group:'',
-      selectList: ['문서편집기 저장시(MS 오피스만 지원)', '문서편집기 종료시'],
-      selectList2: ['활성화', '비활성화', '감춤', '비활성화(체크)', '비활성화(언체크)', '감춤(체크)', '감춤(언체크)'],
-      switch1:false,
-      switch2:false,
-      switch3:false,
-      switch4:false,
-      possibleList: [
+          },
+          {
+            action: 'mdi-content-cut',
+            title: '하위관리자',
+          },
+          {
+            action: 'mdi-tag',
+            title: 'PC 보안',
+          },
+          {
+            action: 'mdi-tag',
+            title: '라이선스 정책',
+          },
+          {
+            action: 'mdi-tag',
+            title: '애드인 정책',
+          },
+          {
+            action: 'mdi-tag',
+            title: 'Custom 정책',
+          },
+        ],
+        group:'',
+        selectList: ['문서편집기 저장시(MS 오피스만 지원)', '문서편집기 종료시'],
+        selectList2: ['활성화', '비활성화', '감춤', '비활성화(체크)', '비활성화(언체크)', '감춤(체크)', '감춤(언체크)'],
+        switch1:false,
+        switch2:false,
+        switch3:false,
+        switch4:false,
+        possibleList: [
           {no:'0000001', range:'임직원', dialog:false },
         ],  
         accessList: [
@@ -450,7 +482,11 @@
           {no:'0000001', range:'임직원'},
           {no:'0000002', range:'외주'},
           {no:'0000003', range:'임원'},
-        ]
+        ],
+        myItems: [
+        { title: '내 정보', icon: 'mdi-briefcase-outline' },
+        { title: '로그아웃', icon: 'mdi-account-arrow-right-outline' },
+      ],
       }
     },
   }
