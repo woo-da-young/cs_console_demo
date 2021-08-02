@@ -214,7 +214,11 @@
             <!-- 3 -->
             <v-col cols="6" >
               <div class="contents_title">MAC 문서 오픈시 생성자 권한 무시</div>
-              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <div class="contents_comment">
+                <ul class="contents_comment-ul">
+                  <li>사용하면 MAC 문서(범주 보안문서) 오픈 시 생성자 권한을 무시하고, 범주 정책의 권한을 따릅니다.</li>
+                </ul>
+              </div>
               <v-switch
                 v-model="switch3"
                 inset 
@@ -227,7 +231,11 @@
             </v-col>
             <v-col  cols="6" >
               <div class="contents_title">DAC 문서 오픈시 생성자 권한 적용 </div>
-              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <div class="contents_comment">
+                암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.
+                암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.
+                암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.
+              </div>
               <v-switch
                 v-model="switch4"
                  
@@ -250,9 +258,11 @@
                               align="center"
                               justify="space-around"
                             >
-                              <v-col cols="8" style="font-weight:bold" >암호화 가능 범주</v-col>
+                              <v-col cols="8">
+                                <div class="contents_title">암호화 가능 범주</div>
+                                <div class="contents_comment">test</div>
+                              </v-col>
                               <v-col cols="4" align="right" justify="space-around">  
-                                
                                 <v-dialog v-model="dialog" persistent max-width="800">
                                   <template v-slot:activator="{ on, attrs }">
                                     <v-btn color="primary" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
@@ -342,7 +352,10 @@
                 <v-list-item>
                   <v-list-item-content style="font-size:1.4rem; ">
                       <v-row align="center" justify="space-around" >
-                        <v-col cols="8">접근대상 지정 그룹</v-col>
+                        <v-col cols="8">
+                            <div class="contents_title">접근대상 지정 그룹</div>
+                            <div class="contents_comment">test</div>
+                          </v-col>
                         <v-col cols="4" align="right" justify="space-around">
                           <v-dialog v-model="dialog2" persistent max-width="800">
                             <template v-slot:activator="{ on, attrs }">
@@ -623,6 +636,7 @@
 }
 .contents_comment {
   font-size: 0.8rem; padding-bottom:5px;
+  color:#95aac9!important;
 }
 .contents_layout {
   padding-top:20px; padding-left:20px;
@@ -639,5 +653,8 @@
 .v-main__wrap{
   background-color: #F9FBFD;
 }
-
+.contents_comment-ul{
+  list-style: none;
+  padding-left: 0px !important;
+}
 </style>
