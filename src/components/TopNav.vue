@@ -2,7 +2,7 @@
   
     <v-app-bar
       app
-      color="#009688"
+      color="#47B8F5"
       dark
     >
       <div class="logo-sheildd-flex align-center" >
@@ -12,8 +12,8 @@
           alt="Vuetify Name"
           class="shrink mt-1 hidden-sm-and-down"
           contain
-          src="http://iamwooda.com/logo.png"
-          width="50"
+          src="https://static.wixstatic.com/media/ea85dc_6b186c0cb88e4122bb373cf64e3b8ff6~mv2.png/v1/fill/w_215,h_60,al_c,q_85,usm_0.66_1.00_0.01/logo_shieldrm_w.webp"
+          width="150"
         />
       </div>
 

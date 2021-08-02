@@ -1,13 +1,11 @@
 <template>
-  <v-app style="background-color: #F9FBFD;">
+  <v-app style="background-color: rgb(246, 251, 255);">
     
     <top-nav/>
     <left-nav/>
     <v-main>
 
-      <v-container>
-
-        <v-container>
+        <div style="padding: 10px">
           <v-row>
             <v-col style="color:#9AADD1;font-size:0.8rem;padding-bottom:10px;">홈 > user1 > 암호화 정책</v-col>
           </v-row>
@@ -18,7 +16,7 @@
           
           <v-row style="padding-top: 10px;">
             <v-col>
-              <v-list rounded style="background-color: #F9FBFD;">
+              <v-list rounded style="background-color: rgb(246, 251, 255);">
                 <v-list-item-group
                   v-model="selectedItem"
                   color="primary"
@@ -29,7 +27,7 @@
                     :key="i"
                   >
                     <v-list-item-content>
-                      <v-list-item-title v-text="item.text"></v-list-item-title>
+                      <v-list-item-title v-text="item.text" ></v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list-item-group>
@@ -37,19 +35,15 @@
             </v-col>
             <v-divider vertical></v-divider>
 
-            <v-col cols="10">
-              <v-container>
+            <v-col cols="10" style="padding:30px;">
                 <v-card class="mx-auto">
                   <v-list-item>
                     <v-list-item-content style="font-size:1.4rem; ">                                          
-                       <v-row
-                          align="center"
-                          justify="space-around"
-                        >
+                       <v-row align="center" justify="space-around">
                           <v-col>기본 암호화 정책</v-col>
                           <v-col align="right" justify="space-around">  
                             <v-btn color="primary" @click="snackbar = true"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
-                              <v-snackbar v-model="snackbar" dark color="#666">
+                              <v-snackbar v-model="snackbar" dark color="#333">
                                 저장되었습니다.
                                 <template v-slot:action="{ attrs }">
                                 <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">닫기</v-btn>
@@ -64,12 +58,12 @@
 
                   <v-list-item v-for="item in basicCryptoItem" :key="item.title">
                     <v-list-item-content>
-                        <v-row align="center" justify="space-around">
+                        <v-row align="center" justify="space-around" >
                           <v-col cols="6">
-                              <v-list-item-title style="font-size:1.1rem" >
+                              <v-list-item-title style="font-size:1rem" >
                                 <v-tooltip bottom>
                                   <template v-slot:activator="{ on, attrs }">
-                                    <span v-bind="attrs" v-on="on">{{item.title}}</span>
+                                    {{item.title}}<v-icon small color="#47B8F5" v-bind="attrs" v-on="on">mdi-alert-circle-outline</v-icon>
                                   </template>
                                   <span v-html="item.tooltip"></span>
                                 </v-tooltip>
@@ -91,10 +85,11 @@
                     <v-list-item-content>
                         <v-row align="center"  justify="space-around">
                           <v-col cols="6">
-                              <v-list-item-title style="font-size:1.1rem" >
+                              <v-list-item-title style="font-size:1rem">
+                                <span>{{item.title}}</span>
                                 <v-tooltip bottom>
                                   <template v-slot:activator="{ on, attrs }">
-                                    <span v-bind="attrs" v-on="on">{{item.title}}</span>
+                                    <span v-bind="attrs" v-on="on" align="center" style="margin:0 auto"><v-icon small  color="#47B8F5" algin="center">mdi-alert-circle-outline</v-icon></span>
                                   </template>
                                   <span v-html="item.tooltip"></span>
                                 </v-tooltip>
@@ -119,10 +114,11 @@
                     <v-list-item-content>
                         <v-row >
                           <v-col cols="6">
-                              <v-list-item-title style="font-size:1.1rem" >
+                              <v-list-item-title style="font-size:1rem" >
+                                <span>생성자 권한</span>
                                 <v-tooltip bottom>
                                 <template v-slot:activator="{ on, attrs }">
-                                  <span v-bind="attrs" v-on="on">생성자 권한</span>
+                                  <span v-bind="attrs" v-on="on" align="center" style="margin:0 auto"><v-icon small  color="#47B8F5" algin="center">mdi-alert-circle-outline</v-icon></span>
                                 </template>
                                 <span>암호 문서 생성시 기본적으로 적용될 권한을 설정합니다.</span>
                               </v-tooltip>
@@ -137,8 +133,8 @@
                                   hide-details
                                   style="padding:0px 10px; margin-top: 8px;"
                                 >
-                                  <template v-slot:label v-if="item.switch === true"><span style="color: #009688">{{item.text}}</span><span style="color: #000"> 사용</span></template>
-                                  <template v-slot:label v-else><span style="color: #009688; ">{{item.text}}</span><span> 미사용</span></template>
+                                  <template v-slot:label v-if="item.switch === true"><span style="color: #1976d2">{{item.text}}</span><span style="color: #000"> 사용</span></template>
+                                  <template v-slot:label v-else><span style="color: #1976d2; ">{{item.text}}</span><span> 미사용</span></template>
                                 </v-switch>
                               </v-col>
                             </v-row>
@@ -146,59 +142,71 @@
                         </v-row>
                     </v-list-item-content>
                   </v-list-item>
-                
-
                 </v-card>
-              </v-container>
 
               <v-row>
-                <v-col>
-                  <v-container>
+                <v-col style="padding-top:30px;" >
+                    
                     <v-card>
                       <v-list-item>
                         <v-list-item-content style="font-size:1.4rem; ">
-                            <v-row
-                              align="center"
-                              justify="space-around"
-                            >
+                            <v-row align="center" justify="space-around">
                               <v-col cols="8">암호화 가능 범주</v-col>
                               <v-col cols="4" align="right" justify="space-around">  
                                 
-                                <v-dialog v-model="dialog" persistent max-width="800">
-                                  <template v-slot:activator="{ on, attrs }">
-                                    <v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
-                                  </template>
-                                  <v-card >
-                                    <v-card-title class="text-h5">범주 선택</v-card-title>
-                                      <v-card-text>
-                                        보안문서 생성 시 선택 가능한 범주를 설정하십시오.<br>
-                                        아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다. 
-                                        <v-card style="margin-top: 20px;" flat>
-                                          <v-simple-table dense>
-                                            <template v-slot:default>
-                                              <thead> 
-                                                <tr>
-                                                  <th class="text-left"><v-checkbox color="primary" value="red" hide-details dense></v-checkbox></th>
-                                                  <th class="text-left">범주ID</th>
-                                                  <th class="text-left">범주명</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody>
-                                                <tr v-for="item in rangeList" :key="item.no">
-                                                  <td><v-checkbox color="primary" :value="item.no" hide-details dense></v-checkbox></td>
-                                                  <td>{{ item.no }}</td>
-                                                  <td>{{ item.range }}</td>
-                                                </tr>
-                                              </tbody>
-                                            </template>
-                                          </v-simple-table>
-                                        </v-card>  
-                                      </v-card-text>
+                                <v-dialog v-model="dialog"  max-width="800" tye- >
+                                  <template v-slot:activator="{ on, attrs }"><v-btn color="primary" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn></template>
+                                  
+                                  <v-card style="overflow-x: hidden;">
+                                    
+                                    <v-list-item>
+                                      <v-list-item-content style="font-size:1.4rem; ">
+                                          <v-row align="center" justify="space-around" >
+                                            <v-col cols="8">범주 선택</v-col>
+                                            <v-col cols="4" align="right" justify="space-around">
+                                              <v-dialog v-model="dialog2" persistent max-width="800">
+                                                <template v-slot:activator="{ on, attrs }">
+                                                  <v-btn color="primary" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
+                                                </template>
+                                                <v-card>
+                                                  <v-card-title class="text-h5">범주 추가</v-card-title>
+                                                    <v-card-text>
+                                                      해당 사용자 및 그룹이 보안문서 생성 시 접근 권한을 지정합니다.
+                                                    </v-card-text>
+                                                  <v-card-actions>
+                                                    <v-spacer></v-spacer>
+                                                    <v-btn color=" darken-1" text @click="dialog2 = false">아니요</v-btn>
+                                                    <v-btn color="blue darken-1" text @click="deleteAccess(dialog2)">네</v-btn>
+                                                  </v-card-actions>
+                                                </v-card>
+                                              </v-dialog>  
+                                            </v-col>
+                                          </v-row>
+                                      </v-list-item-content>
+                                    </v-list-item>
+                                  <v-divider></v-divider>
+                                  
+                                  <v-card-text style="padding-top: 10px; padding-bottom: 10px;">보안문서 생성 시 선택 가능한 범주를 설정하십시오.<br> 아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다. </v-card-text>
+                                  <v-divider></v-divider>
+                                    
+                                  <div v-for="item in rangeList" :key="item.no">
+                                    <v-list-item>
+                                      <v-list-item-content>
+                                        <v-row>
+                                          <v-col cols="4" ></v-col>
+                                          <v-col cols="4">{{item.no}}</v-col>
+                                          <v-col cols="4">{{item.range}}</v-col>
+                                        </v-row>
+                                      </v-list-item-content>
+                                    </v-list-item>
+                                    <v-divider></v-divider>
+                                  </div>
+
                                     <v-card-actions>
                                       <v-spacer></v-spacer>
-                                      <v-btn color=" darken-1" text @click="dialog = false">취소</v-btn>
-                                      <v-btn color="blue darken-1" text @click="deletePossible(dialog)">추가</v-btn>
+                                      <v-btn text @click="closePossible(dialog)" >닫기</v-btn>
                                     </v-card-actions>
+                                    
                                   </v-card>
                                 </v-dialog>
                               </v-col>
@@ -245,36 +253,36 @@
                       </v-list-item>
                       
                     </v-card>
-                  </v-container>
+                  
                 </v-col>
-                <v-col>
-                   <v-container>  
+                <v-col style="padding-top:30px;">
+
                       <v-card>
                         <v-list-item>
-                        <v-list-item-content style="font-size:1.4rem; ">
-                            <v-row align="center" justify="space-around" >
-                              <v-col cols="8">접근대상 지정 그룹</v-col>
-                              <v-col cols="4" align="right" justify="space-around">
-                                 <v-dialog v-model="dialog2" persistent max-width="800">
-                                  <template v-slot:activator="{ on, attrs }">
-                                    <v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
-                                  </template>
-                                  <v-card>
-                                    <v-card-title class="text-h5">범주 추가</v-card-title>
-                                      <v-card-text>
-                                        해당 사용자 및 그룹이 보안문서 생성 시 접근 권한을 지정합니다.
-                                      </v-card-text>
-                                    <v-card-actions>
-                                      <v-spacer></v-spacer>
-                                      <v-btn color=" darken-1" text @click="dialog2 = false">아니요</v-btn>
-                                      <v-btn color="blue darken-1" text @click="deleteAccess(dialog2)">네</v-btn>
-                                    </v-card-actions>
-                                  </v-card>
-                                </v-dialog>  
-                              </v-col>
-                            </v-row>
-                        </v-list-item-content>
-                      </v-list-item>
+                          <v-list-item-content style="font-size:1.4rem; ">
+                              <v-row align="center" justify="space-around" >
+                                <v-col cols="8">접근대상 지정 그룹</v-col>
+                                <v-col cols="4" align="right" justify="space-around">
+                                  <v-dialog v-model="dialog2" persistent max-width="800">
+                                    <template v-slot:activator="{ on, attrs }">
+                                      <v-btn color="primary" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
+                                    </template>
+                                    <v-card>
+                                      <v-card-title class="text-h5">범주 추가</v-card-title>
+                                        <v-card-text>
+                                          해당 사용자 및 그룹이 보안문서 생성 시 접근 권한을 지정합니다.
+                                        </v-card-text>
+                                      <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn color=" darken-1" text @click="dialog2 = false">아니요</v-btn>
+                                        <v-btn color="blue darken-1" text @click="deleteAccess(dialog2)">네</v-btn>
+                                      </v-card-actions>
+                                    </v-card>
+                                  </v-dialog>  
+                                </v-col>
+                              </v-row>
+                          </v-list-item-content>
+                        </v-list-item>
                       <v-divider></v-divider>
                       
 
@@ -305,13 +313,11 @@
                       </div>
                     </v-card>
                    
-                  </v-container>
                 </v-col>
               </v-row>
             </v-col>
           </v-row>
-        </v-container>
-      </v-container>
+</div>
     </v-main>
   </v-app>
 </template>
@@ -382,6 +388,9 @@ import LeftNav from '../src/components/LeftNav.vue'
       deleteAccess (index){
         this.accessList[index].dialog = false
         this.accessList.splice(index, 1);
+      },
+      closePossible() {
+        this.dialog = false;
       }
     }
   }

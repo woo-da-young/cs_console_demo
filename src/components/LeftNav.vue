@@ -4,7 +4,15 @@
         expand-on-hover
         app
         style="padding-top:20px;"
-      >
+      > 
+      <!-- <v-navigation-drawer
+        permanent
+        expand-on-hover
+        app
+        style="padding-top:20px;"
+        dark
+        color="#1976d2"
+      >  -->
 
         <v-list nav>
           <v-list-item-group mandatory>
