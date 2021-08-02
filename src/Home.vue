@@ -302,8 +302,8 @@
                 </ul>
               </div>
             </v-col>
-            <v-col cols="6" style="margin:0; padding:2px">
-              <div class="contents_sub-title contents_sub-title-border">읽기</div>
+            <v-col cols="6" style="margin:0; padding:2px" class="contents_sub-title-border">
+              <div class="contents_sub-title">읽기</div>
               <v-switch
                 v-model="switch5"
                  inset 
@@ -314,8 +314,8 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
-            <v-col cols="6" style="margin:0; padding:2px">
-              <div class="contents_sub-title contents_sub-title-border">편집</div>
+            <v-col cols="6" style="margin:0; padding:2px" class="contents_sub-title-border">
+              <div class="contents_sub-title">편집</div>
               <v-switch
                 v-model="switch6"
                  inset 
@@ -326,7 +326,7 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
-            <v-col cols="6" >
+            <v-col cols="6" style="margin:0; padding:2px"  class="contents_sub-title-border">
               <div class="contents_sub-title">해제</div>
               <v-switch
                 v-model="switch7"
@@ -338,7 +338,7 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
-            <v-col cols="6" >
+            <v-col cols="6" style="margin:0; padding:2px"  class="contents_sub-title-border">
               <div class="contents_sub-title">반출</div>
               <v-switch
                 v-model="switch8"
@@ -350,7 +350,7 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
-            <v-col cols="6" >
+            <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title">마킹</div>
               <v-switch
                 v-model="switch9"
@@ -362,7 +362,7 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
-            <v-col cols="6" >
+            <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title">권한변경</div>
               <v-switch
                 v-model="switch10"
@@ -758,7 +758,7 @@
 }
 .v-switch-style {
   padding:10px 10px;
-  margin-top: 5px !important;
+  margin-top: 10px !important;
 }
 .v-main__wrap{
   background-color: #F9FBFD;
@@ -768,7 +768,8 @@
   padding-left: 0px !important;
 }
 .contents_sub-title{
-  text-align:center; font-weight:bold;
+ padding-left: 10px;
+ font-weight:bold;
 }
 .contents_sub-title-border{
   border-bottom:1px solid #95aac9;
