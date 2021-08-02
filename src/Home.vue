@@ -64,12 +64,9 @@
       absolute
       bottom
       temporary
-      
     >
-      <v-list
-        nav
-      >
-        <v-list-item-group mandatory active-class="deep-purple--text text--accent-4">
+      <v-list nav >
+        <v-list-item-group mandatory color="primary">
           <v-list-item link v-for="item in navs" :key="item.icon" >
             <v-list-item-icon>
               <v-icon>{{item.icon}}</v-icon>
