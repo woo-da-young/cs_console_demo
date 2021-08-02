@@ -142,7 +142,7 @@
                                   
                                   <v-list-item style="background-color:#F9FBFD">
                                       <v-row align="center" justify="space-around">
-                                        <v-col cols="4" ><v-checkbox v-model="checkbox" value="primary" hide-details ></v-checkbox></v-col>
+                                        <v-col cols="4" ><input type="checkbox" style="border:2px solid #ddd;  border-radius: 50%;" class="chcheck" /></v-col>
                                         <v-col cols="4">범주ID</v-col>
                                         <v-col cols="4">범주명</v-col>
                                       </v-row>
@@ -151,7 +151,7 @@
                                   <div v-for="item in rangeList" :key="item.no">
                                     <v-list-item>
                                         <v-row align="center">
-                                          <v-col cols="4" ><input type="checkbox" style="border:2px solid #ddd;  border-radius: 50%;"></v-col>
+                                          <v-col cols="4" ><input type="checkbox" style="border:2px solid #ddd;  border-radius: 50%;" class="chcheck" /></v-col>
                                           <v-col cols="4">{{item.no}}</v-col>
                                           <v-col cols="4">{{item.range}}</v-col>
                                         </v-row>
@@ -365,3 +365,13 @@ import LeftNav from '../src/components/LeftNav.vue'
     }
   }
 </script>
+
+<style>
+  input.chcheck[type="checkbox"] {position: absolute; clip: rect(0,0,0,0); }
+input.chcheck[type="checkbox"] + label{ color: #fff; line-height: 20px; font-size: 14px;}
+input.chcheck[type="checkbox"] + label:before {content: '\a0';display: inline-block;
+  width: 20px;height: 20px;margin-right: 10px;border-radius: 3px;
+  background: #ccc;color:#eee; line-height:20px;  text-align:center;}
+input.chcheck[type="checkbox"]:checked + label:before {content: '\2713';
+  background: linear-gradient(45deg, #03a9f4, #0341a5); color:#fff}
+</style>

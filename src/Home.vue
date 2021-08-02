@@ -5,8 +5,6 @@
     <!-- 상단바 -->
     <v-app-bar
       app
-      dense
-      
       fixed
       color="#0575F3"
       height="40px"
@@ -70,14 +68,13 @@
     >
       <v-list
         nav
-        dense
       >
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
-          <v-list-item v-for="item in navs" :key="item.text">
-            <v-list-item-title>{{item.text}}</v-list-item-title>
+        <v-list-item-group mandatory active-class="deep-purple--text text--accent-4">
+          <v-list-item link v-for="item in navs" :key="item.icon" >
+            <v-list-item-icon>
+              <v-icon>{{item.icon}}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title >{{item.title}}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -571,11 +568,12 @@
         mini: true,
         selectedItem: 1,
         navs: [
-          { text: '정책관리', icon: 'mdi-folder' },
-          { text: '보안감사', icon: 'mdi-shield-check' },
-          { text: '관리도구', icon: 'mdi-hammer-wrench' },
-          { text: '관리자정책', icon: 'mdi-clipboard-account' },
-          { text: '환경설정', icon: 'mdi-cog-outline' },
+          {icon: 'mdi-home', title: '홈'},
+          {icon: 'mdi-folder', title: '정책관리'},
+          {icon: 'mdi-shield-check', title: '보안감사'},
+          {icon: 'mdi-hammer-wrench', title: '관리도구'},
+          {icon: 'mdi-clipboard-account', title: '관리자정책'},
+          {icon: 'mdi-cog-outline', title: '환경설정'}
         ],
         items: [
         {
