@@ -209,10 +209,109 @@
               </v-switch>     
             </v-col>
 
+            <v-divider ></v-divider>
+
+            <v-col cols="6" >
+            <!-- <v-container> -->
+                    <v-card>
+                      <v-list-item>
+                        <v-list-item-content style="font-size:1.4rem; ">
+                            <v-row
+                              align="center"
+                              justify="space-around"
+                            >
+                              <v-col cols="8">암호화 가능 범주</v-col>
+                              <v-col cols="4" align="right" justify="space-around">  
+                                
+                                <v-dialog v-model="dialog" persistent max-width="800">
+                                  <template v-slot:activator="{ on, attrs }">
+                                    <v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
+                                  </template>
+                                  <v-card >
+                                    <v-card-title class="text-h5">범주 선택</v-card-title>
+                                      <v-card-text>
+                                        보안문서 생성 시 선택 가능한 범주를 설정하십시오.<br>
+                                        아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다. 
+                                        <v-card style="margin-top: 20px;" flat>
+                                          <v-simple-table dense>
+                                            <template v-slot:default>
+                                              <thead> 
+                                                <tr>
+                                                  <th class="text-left"><v-checkbox color="primary" value="red" hide-details dense></v-checkbox></th>
+                                                  <th class="text-left">범주ID</th>
+                                                  <th class="text-left">범주명</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <tr v-for="item in rangeList" :key="item.no">
+                                                  <td><v-checkbox color="primary" :value="item.no" hide-details dense></v-checkbox></td>
+                                                  <td>{{ item.no }}</td>
+                                                  <td>{{ item.range }}</td>
+                                                </tr>
+                                              </tbody>
+                                            </template>
+                                          </v-simple-table>
+                                        </v-card>  
+                                      </v-card-text>
+                                    <v-card-actions>
+                                      <v-spacer></v-spacer>
+                                      <v-btn color=" darken-1" text @click="dialog = false">취소</v-btn>
+                                      <v-btn color="blue darken-1" text @click="deletePossible(dialog)">추가</v-btn>
+                                    </v-card-actions>
+                                  </v-card>
+                                </v-dialog>
+                              </v-col>
+                            </v-row>
+                        </v-list-item-content>
+                      </v-list-item>
+
+                      <v-divider></v-divider>
+
+                      <template v-if="possibleList.length > 0">
+                        <div v-for="(item,index) in possibleList" :key="item.no">
+                        <v-list-item>
+                          <v-list-item-content>
+                            <v-row>
+                              <v-col cols="4">{{item.no}}</v-col>
+                              <v-col cols="4">{{item.range}}</v-col>
+                              <v-col cols="4" align="right">
+                                <v-dialog v-model="item.dialog" persistent max-width="500">
+                                  <template v-slot:activator="{ on, attrs }">
+                                    <v-icon color="red" v-bind="attrs" v-on="on">mdi-delete</v-icon>
+                                  </template>
+                                  <v-card>
+                                    <v-card-title class="text-h5">삭제하시겠습니까?</v-card-title>
+                                    <v-card-actions>
+                                      <v-spacer></v-spacer>
+                                      <v-btn color=" darken-1" text @click="item.dialog = false">아니요</v-btn>
+                                      <v-btn color="blue darken-1" text @click="deletePossible(index)">네</v-btn>
+                                    </v-card-actions>
+                                  </v-card>
+                                </v-dialog>
+                              </v-col>
+                            </v-row>
+                          </v-list-item-content>
+                        </v-list-item>
+                        <v-divider></v-divider>
+                      </div>
+                    </template>
+
+                      <v-list-item v-if="possibleList.length === 0">
+                          <v-list-item-content>
+                            <v-row>
+                              <v-col cols="12" align="center">내용이 없습니다</v-col>
+                            </v-row>
+                          </v-list-item-content>
+                        </v-list-item>
+
+                    </v-card>
+          <!-- </v-container> -->
+            </v-col>
+
           </v-row>
 
 
-          <v-divider ></v-divider>
+          
 
           <!-- 1번째 줄 -->
           <!--v-row style="padding-top:20px;">
@@ -339,7 +438,19 @@
       switch1:false,
       switch2:false,
       switch3:false,
-      switch4:false
+      switch4:false,
+      possibleList: [
+          {no:'0000001', range:'임직원', dialog:false },
+        ],  
+        accessList: [
+          {range:'SECURITY DAMAIN', dialog:false },
+          {range:'SOFT CAMP', dialog:false }
+        ],  
+        rangeList: [
+          {no:'0000001', range:'임직원'},
+          {no:'0000002', range:'외주'},
+          {no:'0000003', range:'임원'},
+        ]
       }
     },
   }
@@ -423,7 +534,7 @@
 }
 .contents_layout {
   padding-top:20px; padding-left:20px;
-  padding-bottom:10px;
+  padding-bottom:20px;
 }
 .v-select-style {
   width:50%; padding-bottom: 20px;
