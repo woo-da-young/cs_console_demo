@@ -165,7 +165,7 @@
               <!-- <v-divider style="height:5px"></v-divider> -->
               <v-row style="border-bottom: 1px solid #ccc;">
                 <v-col cols="1" style="padding: 0;">
-                  <v-btn text width="100%" style="display:block" ><v-icon left>mdi-pencil</v-icon>수정</v-btn>
+                  <v-btn text width="100%" style="display:block" disabled ><v-icon left>mdi-pencil</v-icon>수정</v-btn>
                 </v-col>
                 <v-col cols="1" style="padding: 0">
                   <v-btn text width="100%" style="display:block" ><v-icon left>mdi-close</v-icon>취소</v-btn>
@@ -285,7 +285,7 @@
                 </ul>
               </div>
             </v-col>
-            <v-col cols="6" style="margin:0; padding:2px" class="contents_sub-title-border">
+            <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title">읽기</div>
               <v-switch
                 v-model="switch5"
@@ -297,7 +297,7 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
-            <v-col cols="6" style="margin:0; padding:2px" class="contents_sub-title-border">
+            <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title">편집</div>
               <v-switch
                 v-model="switch6"
@@ -309,7 +309,7 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
-            <v-col cols="6" style="margin:0; padding:2px"  class="contents_sub-title-border">
+            <v-col cols="6" style="margin:0; padding:2px" >
               <div class="contents_sub-title">해제</div>
               <v-switch
                 v-model="switch7"
@@ -321,7 +321,7 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
-            <v-col cols="6" style="margin:0; padding:2px"  class="contents_sub-title-border">
+            <v-col cols="6" style="margin:0; padding:2px" >
               <div class="contents_sub-title">반출</div>
               <v-switch
                 v-model="switch8"
