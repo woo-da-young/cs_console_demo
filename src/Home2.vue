@@ -10,11 +10,43 @@
           
         <v-row style="padding-top: 10px;">
           <v-col>
-            <v-list rounded color="#F9FBFD">
+            <!--<v-list rounded color="#F9FBFD">
               <v-list-item-group v-model="selectedItem" color="primary" mandatory>
                 <v-list-item v-for="(item, i) in items" :key="i">
                   <v-list-item-content><v-list-item-title v-text="item.text" ></v-list-item-title></v-list-item-content>
                 </v-list-item>
+              </v-list-item-group>
+            </v-list>-->
+             <v-list color="#F9FBFD" rounded>
+              <v-list-item-group color="primary" v-model="selectedItem" mandatory >
+                <div v-for="(item, i) in items" :key="i">
+                  <v-list-group v-if="item.items && item.items.length > 0"
+                    no-action
+                    style="background-color:#F9FBFD;"
+                  >
+                    <template v-slot:activator >
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item.title" ></v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item
+                      style="background-color:#F9FBFD;"
+                      v-for="child in item.items"
+                      :key="child.title"
+                      v-model="child.active"
+                    >
+                      <v-list-item-content>
+                        <v-list-item-title v-text="child.title"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+
+                  <v-list-item v-else >
+                    <v-list-item-content>
+                      <v-list-item-title v-text="item.title"></v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </div>
               </v-list-item-group>
             </v-list>
           </v-col>
@@ -299,17 +331,69 @@ import LeftNav from '../src/components/LeftNav.vue'
     data () {
       return {
         selectedItem: 2,
+        navs: [
+          {icon: 'mdi-home', title: '홈'},
+          {icon: 'mdi-folder', title: '정책관리'},
+          {icon: 'mdi-shield-check', title: '보안감사'},
+          {icon: 'mdi-hammer-wrench', title: '관리도구'},
+          {icon: 'mdi-clipboard-account', title: '관리자정책'},
+          {icon: 'mdi-cog-outline', title: '환경설정'}
+        ],
         items: [
-          { text: '기본정보', icon: 'mdi-clock' },
-          { text: '강제권한', icon: 'mdi-account' },
-          { text: '암호화정책', icon: 'mdi-flag' },
-          { text: '프로파일', icon: 'mdi-flag' },
-          { text: 'APP제어', icon: 'mdi-flag' },
-          { text: '하위관리자', icon: 'mdi-flag' },
-          { text: 'PC보안', icon: 'mdi-flag' },
-          { text: '라이센스정책', icon: 'mdi-flag' },
-          { text: '애드인정책', icon: 'mdi-flag' },
-          { text: 'Custom정책', icon: 'mdi-flag' },
+        {
+          action: 'mdi-ticket',
+          title: '기본정보',
+        },
+        {
+          action: 'mdi-silverware-fork-knife',          
+          items: [
+            { title: '등급권한'},
+            { title: 'DAC 권한' },
+            { title: 'MAC 권한' },
+          ],
+          title: '강제권한',
+        },
+        {
+          action: 'mdi-school',
+          items: [
+            { title: '기본암호화 정책' },
+            { title: '강제암호화 정책' },
+          ],
+          title: '암호화 정책',
+        },
+        {
+          action: 'mdi-run',
+          items: [
+            { title: '로그인' },
+            { title: '패스워드' },
+            { title: '업그레이드' },
+            { title: 'APP제어' },
+            { title: '프린트마킹' },
+            { title: '외부전송' },
+            { title: '기타' },
+          ],
+          title: '프로파일',
+          },
+          {
+            action: 'mdi-content-cut',
+            title: '하위관리자',
+          },
+          {
+            action: 'mdi-tag',
+            title: 'PC 보안',
+          },
+          {
+            action: 'mdi-tag',
+            title: '라이선스 정책',
+          },
+          {
+            action: 'mdi-tag',
+            title: '애드인 정책',
+          },
+          {
+            action: 'mdi-tag',
+            title: 'Custom 정책',
+          },
         ],
         reveal: false,
         basicCryptoItem: [
@@ -348,7 +432,9 @@ import LeftNav from '../src/components/LeftNav.vue'
         snackbar: false,
         checkbox: [],
         singleSelect: false,
-        rangeSelectedItem:false
+        rangeSelectedItem:false,
+        subListOn: 1,
+         listOn: 3,
       }
     },
     methods: {
