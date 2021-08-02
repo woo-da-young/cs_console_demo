@@ -62,9 +62,19 @@
 
     <v-main>
       <!-- 사이트맵?? -->
-      <v-container fluid   >
+      <v-container fluid >
         <div style="color:#0575F3;font-size:14px;padding-bottom:10px;">홈 <span class="nav-divider">></span> user1 <span class="nav-divider">></span>  암호화 정책</div>
-        <span><v-icon x-large>mdi-account</v-icon></span><span style="font-size:1.6rem;font-weight:bold;"> USER1</span>
+
+        <div class="softcamp-blade-title-content">
+          <span class="softcamp-blade-header-icon"><v-icon x-large>mdi-account</v-icon></span>                
+          <div class="softcamp-blade-title">
+            <div class="softcamp-blade-title-toprow">
+              <h2 class="softcamp-blade-title-titleText">USER1 <span class="softcamp-font-regular"> | 기본암호화 정책</span></h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- <span><v-icon x-large>mdi-account</v-icon></span><span style="font-size:1.6rem;font-weight:bold;"> USER1</span> -->
         <v-divider></v-divider>
 
         <!-- 메뉴 리스트 -->
@@ -109,8 +119,15 @@
           <v-row>
             <v-col cols="12" style="margin-top:10px; ">
               <!-- <v-divider style="height:5px"></v-divider> -->
-              <v-row style="border-top: 2px solid #ccc;border-bottom: 1px solid #ccc; margin-top:10px; ">
-                <v-col cols="3" style="padding: 0"><v-btn text style="padding: 0">적용</v-btn></v-col><v-col cols="9" style="padding: 0"><v-btn text >취소</v-btn></v-col>
+              <v-row style="border-bottom: 1px solid #ccc;">
+                <v-col cols="1" style="padding: 0">
+                  <v-icon>mdi-content-save-all</v-icon>
+                  <v-btn text style="padding: 0">적용</v-btn>
+                </v-col>
+                <v-col cols="1" style="padding: 0">
+                  <v-icon>mdi-close</v-icon>
+                  <v-btn text >취소</v-btn>
+                </v-col>
               </v-row>
             </v-col>
             
@@ -213,9 +230,9 @@
         {
           action: 'mdi-silverware-fork-knife',          
           items: [
-            { title: 'Breakfast & brunch' },
-            { title: 'New American' },
-            { title: 'Sushi' },
+            { title: '등급권한' },
+            { title: 'DAC 권한' },
+            { title: 'MAC 권한' },
           ],
           title: '강제권한',
         },
@@ -229,22 +246,23 @@
         },
         {
           action: 'mdi-run',
-          items: [{ title: 'List Item' }],
+          items: [
+            { title: '로그인' },
+            { title: '패스워드' },
+            { title: '업그레이드' },
+            { title: 'APP제어' },
+            { title: '프린트마킹' },
+            { title: '외부전송' },
+            { title: '기타' },
+          ],
           title: '프로파일',
         },
         {
-          action: 'mdi-bottle-tonic-plus',
-          items: [{ title: 'List Item' }],
-          title: 'APP제어',
-        },
-        {
           action: 'mdi-content-cut',
-          items: [{ title: 'List Item' }],
           title: '하위관리자',
         },
         {
           action: 'mdi-tag',
-          items: [{ title: 'List Item' }],
           title: 'PC 보안',
         },
         {
@@ -276,5 +294,64 @@
 }
 .nav-divider{
   color:gray;
+}
+
+/* .fxs-blade-title-content */
+.softcamp-blade-title-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 8px 20px;  
+}
+
+.softcamp-blade-header-icon {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-right: 10px;
+    position: relative;
+}
+
+.softcamp-blade-title {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+}
+
+.softcamp-blade-title-toprow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.softcamp-blade-title-titleText {
+    margin: 0;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+}
+
+.softcamp-blade-title-titleText {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    margin-right: 16px;
 }
 </style>
