@@ -5,8 +5,6 @@
     <!-- 상단바 -->
     <v-app-bar
       app
-      dense
-      
       fixed
       color="#0575F3"
       height="40px"
@@ -40,23 +38,58 @@
         offset-y
         align="center"
       >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          class="white--text ma-5"
-          v-bind="attrs"
-          v-on="on"
-          text
-        >
-        <v-icon size="35">mdi-account</v-icon>
-      </v-btn> 
-      </template>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="white--text ma-5"
+            v-bind="attrs"
+            v-on="on"
+            text
+          >
+          <v-icon size="35">mdi-account</v-icon>
+        </v-btn> 
+        </template>
 
-      <v-list dense color="#fff">
+        <v-card
+          class="mx-auto"
+          max-width="344"
+          outlined
+        > 
+
+          <v-list-item three-line>
+            <v-list-item-avatar
+              tile
+              size="80"
+              color="grey"
+            ></v-list-item-avatar>
+            <v-list-item-content>
+              <div class="text-overline mb-4">
+                OVERLINE
+              </div>
+              <v-list-item-title class="text-h5 mb-1">
+                Headline 5
+              </v-list-item-title>
+              <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+            </v-list-item-content>
+
+            
+          </v-list-item>
+
+          <v-card-actions>
+            <v-btn
+              outlined
+              rounded
+              text
+            >
+              Button
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      <!-- <v-list dense color="#fff">
         <v-list-item v-for="(item, i) in myItems" :key="i" style="width: 200px; back;background-color: #fff" color="#fff">
           <v-list-item-icon><v-icon>{{item.icon}}</v-icon></v-list-item-icon>
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
-      </v-list>
+      </v-list> -->
     </v-menu>
     </v-app-bar>
 
@@ -66,18 +99,14 @@
       absolute
       bottom
       temporary
-      
     >
-      <v-list
-        nav
-        dense
-      >
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
-          <v-list-item v-for="item in navs" :key="item.text">
-            <v-list-item-title>{{item.text}}</v-list-item-title>
+      <v-list nav >
+        <v-list-item-group mandatory color="primary">
+          <v-list-item link v-for="item in navs" :key="item.icon" >
+            <v-list-item-icon>
+              <v-icon>{{item.icon}}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title >{{item.title}}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -103,85 +132,57 @@
         <v-divider></v-divider>
 
         <!-- 메뉴 리스트 -->
-        <v-card
-          width="300px"
-          style="float:left; background-color:#F9FBFD"
-          flat
-          height="100vh"
-          background-color="#F9FBFD"
-        >
-          <v-list height="100vh;" color="#F9FBFD">
-            <!--<v-list-group
-              v-for="item in items"
-              :key="item.title"
-              v-model="item.active"
-              :prepend-icon="item.action"
-              no-action
-              style="background-color:#F9FBFD;"
-            >
-              <template v-slot:activator >
-                <v-list-item-content>
-                  <v-list-item-title v-text="item.title" ></v-list-item-title>
-                </v-list-item-content>
-              </template>
-              <v-list-item
-                style="background-color:#F9FBFD;"
-                v-for="child in item.items"
-                :key="child.title"
-              >
-                <v-list-item-content>
-                  <v-list-item-title v-text="child.title"></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-group>-->
-
-            <v-list-item-group color="primary" v-model="listOn" mandatory>
-              <div v-for="(item, i) in items" :key="i">
-                <v-list-group v-if="item.items && item.items.length > 0"
-                  
-                  :prepend-icon="item.action"
-                  no-action
-                  style="background-color:#F9FBFD;"
-                >
-                  <template v-slot:activator >
-                    <v-list-item-content>
-                      <v-list-item-title v-text="item.title" ></v-list-item-title>
-                    </v-list-item-content>
-                  </template>
-                  
-                  <v-list-item
+        
+        <div style="display: table">
+          <v-card
+            width="300px"
+            style="background-color:#F9FBFD;display: table-cell"
+            flat
+            background-color="#F9FBFD"
+          >
+            <v-list color="#F9FBFD">
+              <v-list-item-group color="primary" v-model="listOn" mandatory>
+                <div v-for="(item, i) in items" :key="i">
+                  <v-list-group v-if="item.items && item.items.length > 0"
+                    :prepend-icon="item.action"
+                    no-action
                     style="background-color:#F9FBFD;"
-                    v-for="child in item.items"
-                    :key="child.title"
-                    v-model="child.active"
                   >
+                    <template v-slot:activator >
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item.title" ></v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item
+                      style="background-color:#F9FBFD;"
+                      v-for="child in item.items"
+                      :key="child.title"
+                      v-model="child.active"
+                    >
+                      <v-list-item-content>
+                        <v-list-item-title v-text="child.title"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+
+                  <v-list-item  v-else >
+                    <v-list-item-icon>
+                      <v-icon v-text="item.action"></v-icon>
+                    </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title v-text="child.title"></v-list-item-title>
+                      <v-list-item-title v-text="item.title"></v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
-                </v-list-group>
-
-                 <v-list-item  v-else >
-                  <v-list-item-icon>
-                    <v-icon v-text="item.action"></v-icon>
-                  </v-list-item-icon>
-                  <v-list-item-content>
-                    <v-list-item-title v-text="item.title"></v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                
-              </div>
-            </v-list-item-group>
-
-            
-
-
-          </v-list>
-        </v-card>
+                </div>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
         
+
+
+
         <!-- 메인 화면 -->
         <div style="width:(100% - 300px);">
-          
           <v-row>
             <v-col cols="12" style="margin-top:10px;">
               <!-- <v-divider style="height:5px"></v-divider> -->
@@ -199,8 +200,13 @@
           <!-- 1번째 줄 -->
           <v-row class="contents_layout">
             <v-col cols="6" >
-              <div class="contents_title">암호화 시점</div>
-              <div class="contents_comment">보안문서 생성시 암호화 시점을 설정 할 수 있습니다.</div>
+              <!-- <div class="contents_title">암호화 시점</div>
+              <div class="contents_comment">보안문서 생성시 암호화 시점을 설정 할 수 있습니다.</div> -->
+              <v-tooltip bottom :open-on-hover="false">
+                <!-- <template v-slot:activator="{ on, attrs }">암호화 시점<v-icon  color="#47B8F5" v-bind="attrs" v-on="on" right>mdi-alert-circle-outline</v-icon></template> -->
+                <template #activator="{ on }">암호화 시점<v-icon  color="#47B8F5" @click="on.click" right>mdi-alert-circle-outline</v-icon></template>
+                <span >보안문서 생성시 암호화 시점을 설정 할 수 있습니다.</span>
+              </v-tooltip>
               <v-select
                 :items="selectList"
                 dense
@@ -248,7 +254,7 @@
                 class="v-select-style"
               ></v-select>       
             </v-col>
-            </v-row>
+          </v-row>
 
           <v-row class="contents_layout">
             <!-- 3 -->
@@ -544,15 +550,9 @@
               </v-card>
             </v-col>
           </v-row>
-
-                      
-          
-          
-          
-
+        </div>
         </div>
 
-          
       </v-container>    
     </v-main>  
 
@@ -571,11 +571,12 @@
         mini: true,
         selectedItem: 1,
         navs: [
-          { text: '정책관리', icon: 'mdi-folder' },
-          { text: '보안감사', icon: 'mdi-shield-check' },
-          { text: '관리도구', icon: 'mdi-hammer-wrench' },
-          { text: '관리자정책', icon: 'mdi-clipboard-account' },
-          { text: '환경설정', icon: 'mdi-cog-outline' },
+          {icon: 'mdi-home', title: '홈'},
+          {icon: 'mdi-folder', title: '정책관리'},
+          {icon: 'mdi-shield-check', title: '보안감사'},
+          {icon: 'mdi-hammer-wrench', title: '관리도구'},
+          {icon: 'mdi-clipboard-account', title: '관리자정책'},
+          {icon: 'mdi-cog-outline', title: '환경설정'}
         ],
         items: [
         {
@@ -666,6 +667,7 @@
       dialog2 : false,
       listOn: 1,
       subListOn: 1,
+      tooltip1: false
       }
     },
   }
