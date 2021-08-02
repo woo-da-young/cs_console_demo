@@ -139,8 +139,26 @@
                                     </v-list-item-content>
                                   </v-list-item>
                                   <v-divider></v-divider>
-
-                                  <!-- <v-list-item style="background-color:#F9FBFD">
+                                  
+                                  <v-list-item style="background-color:#F9FBFD">
+                                      <v-row align="center" justify="space-around">
+                                        <v-col cols="4" ><v-checkbox v-model="checkbox" value="primary" hide-details ></v-checkbox></v-col>
+                                        <v-col cols="4">범주ID</v-col>
+                                        <v-col cols="4">범주명</v-col>
+                                      </v-row>
+                                  </v-list-item>
+                                  <v-divider></v-divider>
+                                  <div v-for="item in rangeList" :key="item.no">
+                                    <v-list-item>
+                                        <v-row align="center">
+                                          <v-col cols="4" ><input type="checkbox" style="border:2px solid #ddd;  border-radius: 50%;"></v-col>
+                                          <v-col cols="4">{{item.no}}</v-col>
+                                          <v-col cols="4">{{item.range}}</v-col>
+                                        </v-row>
+                                    </v-list-item>
+                                    <v-divider></v-divider> 
+                                  </div>
+                                  <!--<v-list-item style="background-color:#F9FBFD">
                                       <v-row align="center" justify="space-around">
                                         <v-col cols="4" ><v-checkbox v-model="checkbox" value="primary" hide-details ></v-checkbox></v-col>
                                         <v-col cols="4">범주ID</v-col>
