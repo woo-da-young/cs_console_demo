@@ -145,9 +145,8 @@
             <v-col cols="12" style="margin-top:10px; ">
               <!-- <v-divider style="height:5px"></v-divider> -->
               <v-row style="border-bottom: 1px solid #ccc;">
-                <v-col cols="2" style="padding: 0">
-                  <v-icon>mdi-content-save-all</v-icon>
-                  <v-btn text style="padding: 0">적용</v-btn>
+                <v-col cols="2" style="padding: 0;">
+                  <v-btn text width="100%" style="display:block" ><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
                 </v-col>
                 <v-col cols="2" style="padding: 0">
                   <v-icon>mdi-close</v-icon>

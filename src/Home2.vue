@@ -140,7 +140,7 @@
                                   </v-list-item>
                                   <v-divider></v-divider>
 
-                                  <v-list-item style="background-color:#F9FBFD">
+                                  <!-- <v-list-item style="background-color:#F9FBFD">
                                       <v-row align="center" justify="space-around">
                                         <v-col cols="4" ><v-checkbox v-model="checkbox" value="primary" hide-details ></v-checkbox></v-col>
                                         <v-col cols="4">범주ID</v-col>
@@ -156,10 +156,14 @@
                                           <v-col cols="4">{{item.range}}</v-col>
                                         </v-row>
                                     </v-list-item>
-                                    <v-divider></v-divider>
-                                  </div>
+                                    <v-divider></v-divider> -->
+
                                     
-                                  <v-card-actions><v-spacer></v-spacer><v-btn text @click="closePossible(dialog);" >닫기</v-btn></v-card-actions>  
+
+
+                                    
+                                  <!-- <v-card-actions><v-spacer></v-spacer><v-btn text @click="closePossible(dialog);" >닫기</v-btn></v-card-actions>   -->
+                                  <v-card-actions></v-card-actions>  
                                 </v-card>
                               </v-dialog>
                             </v-col>
