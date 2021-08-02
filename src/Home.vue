@@ -111,7 +111,7 @@
           background-color="#F9FBFD"
         >
           <v-list height="100vh;" color="#F9FBFD">
-            <v-list-group
+            <!--<v-list-group
               v-for="item in items"
               :key="item.title"
               v-model="item.active"
@@ -120,11 +120,10 @@
               style="background-color:#F9FBFD;"
             >
               <template v-slot:activator >
-                <v-list-item-content >
+                <v-list-item-content>
                   <v-list-item-title v-text="item.title" ></v-list-item-title>
                 </v-list-item-content>
               </template>
-
               <v-list-item
                 style="background-color:#F9FBFD;"
                 v-for="child in item.items"
@@ -134,7 +133,49 @@
                   <v-list-item-title v-text="child.title"></v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
-            </v-list-group>
+            </v-list-group>-->
+
+            <v-list-item-group color="primary" v-model="listOn" mandatory>
+              <div v-for="(item, i) in items" :key="i">
+                <v-list-group v-if="item.items && item.items.length > 0"
+                  
+                  :prepend-icon="item.action"
+                  no-action
+                  style="background-color:#F9FBFD;"
+                >
+                  <template v-slot:activator >
+                    <v-list-item-content>
+                      <v-list-item-title v-text="item.title" ></v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                  
+                  <v-list-item
+                    style="background-color:#F9FBFD;"
+                    v-for="child in item.items"
+                    :key="child.title"
+                    v-model="child.active"
+                  >
+                    <v-list-item-content>
+                      <v-list-item-title v-text="child.title"></v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-group>
+
+                 <v-list-item  v-else >
+                  <v-list-item-icon>
+                    <v-icon v-text="item.action"></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title v-text="item.title"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                
+              </div>
+            </v-list-item-group>
+
+            
+
+
           </v-list>
         </v-card>
         
@@ -631,7 +672,7 @@
         {
           action: 'mdi-silverware-fork-knife',          
           items: [
-            { title: '등급권한' },
+            { title: '등급권한'},
             { title: 'DAC 권한' },
             { title: 'MAC 권한' },
           ],
@@ -708,6 +749,10 @@
         { title: '내 정보', icon: 'mdi-briefcase-outline' },
         { title: '로그아웃', icon: 'mdi-account-arrow-right-outline' },
       ],
+      dialog: false,
+      dialog2 : false,
+      listOn: 1,
+      subListOn: 1,
       }
     },
   }
