@@ -43,7 +43,7 @@
                       <v-col cols="6">
                         <v-list-item-title style="font-size:1rem" >
                           <v-tooltip bottom>
-                            <template v-slot:activator="{ on, attrs }">{{item.title}}<v-icon  color="#47B8F5" v-bind="attrs" v-on="on" right>mdi-alert-circle-outline</v-icon></template>
+                            <template v-slot:activator="{ on, attrs }">{{item.title}}<v-icon  color="#47B8F5" v-bind="attrs" v-on="on" right style="padding-bottom:3px;">mdi-alert-circle-outline</v-icon></template>
                             <span v-html="item.tooltip"></span>
                           </v-tooltip>
                         </v-list-item-title>
@@ -62,7 +62,7 @@
                         <v-list-item-title style="font-size:1rem"><span>{{item.title}}</span>
                           <v-tooltip bottom>
                             <template v-slot:activator="{ on, attrs }">
-                              <span v-bind="attrs" v-on="on" align="center" style="margin:0 auto"><v-icon color="#47B8F5" algin="center" right>mdi-alert-circle-outline</v-icon></span>
+                              <span v-bind="attrs" v-on="on" align="center" style="margin:0 auto"><v-icon color="#47B8F5" algin="center" right style="padding-bottom:3px;">mdi-alert-circle-outline</v-icon></span>
                             </template>
                             <span v-html="item.tooltip"></span>
                           </v-tooltip>
@@ -85,7 +85,7 @@
                             <v-list-item-title style="font-size:1rem" ><span>생성자 권한</span>
                               <v-tooltip bottom>
                               <template v-slot:activator="{ on, attrs }">
-                                <span v-bind="attrs" v-on="on" align="center" style="margin:0 auto"><v-icon color="#47B8F5" algin="center" right>mdi-alert-circle-outline</v-icon></span>
+                                <span v-bind="attrs" v-on="on" align="center" style="margin:0 auto"><v-icon color="#47B8F5" algin="center" right style="padding-bottom:2px;">mdi-alert-circle-outline</v-icon></span>
                               </template>
                               <span>암호 문서 생성시 기본적으로 적용될 권한을 설정합니다.</span>
                             </v-tooltip>
@@ -122,7 +122,7 @@
                                         <v-row align="center" justify="space-around" >
                                           <v-col cols="8" >
                                             <v-tooltip bottom>
-                                              <template v-slot:activator="{ on, attrs }">범주 선택<v-icon right color="#47B8F5" v-bind="attrs" v-on="on" >mdi-alert-circle-outline</v-icon></template>
+                                              <template v-slot:activator="{ on, attrs }">범주 선택<v-icon right color="#47B8F5" v-bind="attrs" v-on="on" style="padding-bottom:4px;">mdi-alert-circle-outline</v-icon></template>
                                               <span> 보안문서 생성 시 선택 가능한 범주를 설정하십시오.<br> 아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다.</span>
                                             </v-tooltip>
                                           </v-col>
