@@ -120,11 +120,11 @@
             <v-col cols="12" style="margin-top:10px; ">
               <!-- <v-divider style="height:5px"></v-divider> -->
               <v-row style="border-bottom: 1px solid #ccc;">
-                <v-col cols="1" style="padding: 0">
+                <v-col cols="2" style="padding: 0">
                   <v-icon>mdi-content-save-all</v-icon>
                   <v-btn text style="padding: 0">적용</v-btn>
                 </v-col>
-                <v-col cols="1" style="padding: 0">
+                <v-col cols="2" style="padding: 0">
                   <v-icon>mdi-close</v-icon>
                   <v-btn text >취소</v-btn>
                 </v-col>
@@ -133,34 +133,89 @@
             
           </v-row>
           <!-- 1번째 줄 -->
-          <v-row style="padding-top:20px;">
+          <v-row class="contents_layout">
             <v-col cols="6" >
-              <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
-              <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <div class="contents_title">암호화 시점</div>
+              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
               <v-select
                 :items="selectList"
                 dense
                 hide-details
-                style="width:50%; padding-bottom: 20px;"
+                class="v-select-style"
               ></v-select>
             </v-col>
             <v-col  cols="6" >
-              <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
-              <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
-              <v-select
-                :items="selectList"
-                dense
-                filled
-                hide-details
-                style="width:50%; padding-bottom: 20px;"
-              ></v-select>
-              
+              <div class="contents_title">단순 암호화 사용</div>
+              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <v-switch
+                v-model="switch1"
+                inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch1 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>         
             </v-col>
+            <!-- 2 -->
+            <v-col cols="6" >
+              <div class="contents_title">폴더내 파일 암호화</div>
+              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <v-switch
+                v-model="switch2"
+                inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch2 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>  
+            </v-col>
+            <v-col  cols="6" >
+              <div class="contents_title">작업 종료시 창 표시안함 체크박스</div>
+              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <v-select
+                :items="selectList2"
+                dense
+                hide-details
+                class="v-select-style"
+              ></v-select>       
+            </v-col>
+            <!-- 3 -->
+            <v-col cols="6" >
+              <div class="contents_title">MAC 문서 오픈시 생성자 권한 무시</div>
+              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <v-switch
+                v-model="switch3"
+                inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch3 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>  
+            </v-col>
+            <v-col  cols="6" >
+              <div class="contents_title">DAC 문서 오픈시 생성자 권한 적용 </div>
+              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <v-switch
+                v-model="switch4"
+                inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch4 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>     
+            </v-col>
+
           </v-row>
+
+
           <v-divider ></v-divider>
 
           <!-- 1번째 줄 -->
-          <v-row style="padding-top:20px;">
+          <!--v-row style="padding-top:20px;">
             <v-col v-for="n in 2" :key="n" cols="6" >
               <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
               <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
@@ -173,10 +228,10 @@
               ></v-select>
             </v-col>
           </v-row>
-          <v-divider ></v-divider>
+          <v-divider ></v-divider-->
 
           <!-- 3번째 줄 -->
-          <v-row style="padding-top:20px;">
+          <!--v-row style="padding-top:20px;">
             <v-col v-for="n in 2" :key="n" cols="6" >
               <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
               <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
@@ -186,11 +241,11 @@
                 hide-details
                 filled
                 rounded
-                style="width:50%; padding-bottom: 20px;"
+                style="width:50%; padding-bottom: 20px; background-color:white;"
               ></v-select>
             </v-col>
           </v-row>
-          <v-divider ></v-divider>
+          <v-divider ></v-divider-->
 
           
           
@@ -280,6 +335,11 @@
       ],
       group:'',
       selectList: ['문서편집기 저장시(MS 오피스만 지원)', '문서편집기 종료시'],
+      selectList2: ['활성화', '비활성화', '감춤', '비활성화(체크)', '비활성화(언체크)', '감춤(체크)', '감춤(언체크)'],
+      switch1:false,
+      switch2:false,
+      switch3:false,
+      switch4:false
       }
     },
   }
@@ -354,4 +414,27 @@
     flex: 0 1 auto;
     margin-right: 16px;
 }
+
+.contents_title {
+  font-size: 1.2rem; font-weight: bold;padding-bottom:5px;
+}
+.contents_comment {
+  font-size: 0.8rem; padding-bottom:5px;
+}
+.contents_layout {
+  padding-top:20px; padding-left:20px;
+  padding-bottom:10px;
+}
+.v-select-style {
+  width:50%; padding-bottom: 20px;
+  margin-top: 5px !important;
+}
+.v-switch-style {
+  padding:10px 10px;
+  margin-top: 5px !important;
+}
+.v-main__wrap{
+  background-color: #F9FBFD;
+}
+
 </style>
