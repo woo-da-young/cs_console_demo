@@ -159,7 +159,7 @@
           <v-row class="contents_layout">
             <v-col cols="6" >
               <div class="contents_title">암호화 시점</div>
-              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <div class="contents_comment">보안문서 생성시 암호화 시점을 설정 할 수 있습니다.</div>
               <v-select
                 :items="selectList"
                 dense
@@ -169,9 +169,10 @@
             </v-col>
             <v-col  cols="6" >
               <div class="contents_title">단순 암호화 사용</div>
-              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <div class="contents_comment">단순 암호화 기능의 사용 여부를 설정 할 수 있습니다.</div>
               <v-switch
                 v-model="switch1" 
+                inset 
                 hide-details                
                 class="v-switch-style"
               >
@@ -185,7 +186,7 @@
             <!-- 2 -->
             <v-col cols="6" >
               <div class="contents_title">폴더내 파일 암호화</div>
-              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <div class="contents_comment">폴더 내의 파일을 일괄적으로 암호화하는 기능의 사용 여부를 설정합니다. </div>
               <v-switch
                 v-model="switch2"
                 inset 
@@ -198,7 +199,7 @@
             </v-col>
             <v-col  cols="6" >
               <div class="contents_title">작업 종료시 창 표시안함 체크박스</div>
-              <div class="contents_comment">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
+              <div class="contents_comment">작업 종료시 암호화를 진행할 지를 묻는 창의 하단의 '다음부터 이 창을 표시하지 않음' 문구 체크 및 활성화 여부를 선택합니다.</div>
               <v-select
                 :items="selectList2"
                 dense
@@ -230,22 +231,199 @@
             <v-col  cols="6" >
               <div class="contents_title">DAC 문서 오픈시 생성자 권한 적용 </div>
               <div class="contents_comment">
+                <ul class="contents_comment-ul">
+                  <li>사용하면 DAC 문서 오픈 시 생성자 권한을 적용합니다</li>
+                </ul>
                 암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.
                 암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.
                 암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.
               </div>
               <v-switch
                 v-model="switch4"
-                 
+                 inset 
                 hide-details                
                 class="v-switch-style"
               >
                 <template v-slot:label v-if="switch4 === true"><span style="color: #000">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
-              </v-switch>     
+              </v-switch>
             </v-col>
           </v-row>
-          <v-divider></v-divider>        
+          <v-divider></v-divider>
+          <!-- 생성자 권한 시작 -->
+          <v-row class="contents_layout">
+            <v-col cols="12" >
+              <div class="contents_title">생성자 권한</div>
+              <div class="contents_comment">
+                <ul class="contents_comment-ul">
+                  <li>문서 생성자의 보안문서 사용 권한을 설정합니다. 읽기, 편집, 해제, 반출, 출력, 마킹, 권한변경 등의 권한을 설정할 수 있습니다. </li>
+                  <li>참고: 일반 문서의 경우, 반출 권한과 상관없이 외부 전송용 보안 파일을 생성할 수 있습니다. </li>
+                </ul>
+              </div>
+            </v-col>
+            <v-col cols="6" class="margin-padding-zero">
+              <div class="contents_sub-title contents_sub-title-border">읽기</div>
+              <v-switch
+                v-model="switch5"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch5 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="6" class="margin-padding-zero">
+              <div class="contents_sub-title contents_sub-title-border">편집</div>
+              <v-switch
+                v-model="switch6"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch6 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="6" >
+              <div class="contents_sub-title">해제</div>
+              <v-switch
+                v-model="switch7"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch7 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="6" >
+              <div class="contents_sub-title">반출</div>
+              <v-switch
+                v-model="switch8"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch8 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="6" >
+              <div class="contents_sub-title">마킹</div>
+              <v-switch
+                v-model="switch9"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch9 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="6" >
+              <div class="contents_sub-title">권한변경</div>
+              <v-switch
+                v-model="switch10"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch10 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+          </v-row>
+          <!-- 생성자 권한 끝 -->
+
+<v-divider></v-divider>
+          <!-- 생성자 권한 시작 -->
+          <v-row class="contents_layout">
+            <v-col cols="12" >
+              <div class="contents_title">생성자 권한</div>
+              <div class="contents_comment">
+                <ul class="contents_comment-ul">
+                  <li>문서 생성자의 보안문서 사용 권한을 설정합니다. 읽기, 편집, 해제, 반출, 출력, 마킹, 권한변경 등의 권한을 설정할 수 있습니다. </li>
+                  <li>참고: 일반 문서의 경우, 반출 권한과 상관없이 외부 전송용 보안 파일을 생성할 수 있습니다. </li>
+                </ul>
+              </div>
+            </v-col>
+            <v-col cols="3" >
+              <div class="contents_sub-title contents_sub-title-border">읽기</div>
+              <v-switch
+                v-model="switch5"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch5 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="3" >
+              <div class="contents_sub-title contents_sub-title-border">편집</div>
+              <v-switch
+                v-model="switch6"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch6 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="3" >
+              <div class="contents_sub-title contents_sub-title-border">해제</div>
+              <v-switch
+                v-model="switch7"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch7 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="3" >
+              <div class="contents_sub-title contents_sub-title-border">반출</div>
+              <v-switch
+                v-model="switch8"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch8 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="3" >
+              <div class="contents_sub-title contents_sub-title-border">마킹</div>
+              <v-switch
+                v-model="switch9"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch9 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="3" >
+              <div class="contents_sub-title contents_sub-title-border">권한변경</div>
+              <v-switch
+                v-model="switch10"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch10 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+          </v-row>
+          <!-- 생성자 권한 끝 -->
+
+          <v-divider></v-divider>
           <v-row class="contents_layout">
             <v-col cols="6" >
             <!-- <v-container> -->
@@ -258,7 +436,11 @@
                             >
                               <v-col cols="8">
                                 <div class="contents_title">암호화 가능 범주</div>
-                                <div class="contents_comment">test</div>
+                                <div class="contents_comment">
+                                  <ul class="contents_comment-ul">
+                                    <li>사용자의 범주 보안문서 생성 시 선택 가능한 범주 목록을 지정 할 수 있습니다. </li>
+                                  </ul>
+                                </div>
                               </v-col>
                               <v-col cols="4" align="right" justify="space-around">  
                                 <v-dialog v-model="dialog" persistent max-width="800">
@@ -332,7 +514,7 @@
                         </v-list-item>
                         <v-divider></v-divider>
                       </div>
-                    </template>
+                      </template>
 
                       <v-list-item v-if="possibleList.length === 0">
                           <v-list-item-content>
@@ -340,10 +522,10 @@
                               <v-col cols="12" align="center">내용이 없습니다</v-col>
                             </v-row>
                           </v-list-item-content>
-                        </v-list-item>
+                      </v-list-item>
                   
                     </v-card> 
-          <!-- </v-container> -->
+
             </v-col>
             <v-col cols="6" >
               <v-card style="background-color:#F9FBFD">
@@ -352,7 +534,11 @@
                       <v-row align="center" justify="space-around" >
                         <v-col cols="8">
                             <div class="contents_title">접근대상 지정 그룹</div>
-                            <div class="contents_comment">test</div>
+                            <div class="contents_comment">
+                              <ul class="contents_comment-ul">
+                                <li>사용자가 보안문서 생성시 접근권한을 지정할 수 있도록 조직의 범위를 설정할 수 있습니다.</li>
+                              </ul>
+                            </div>
                           </v-col>
                         <v-col cols="4" align="right" justify="space-around">
                           <v-dialog v-model="dialog2" persistent max-width="800">
@@ -401,50 +587,12 @@
                   </v-list-item>
                   <v-divider></v-divider>
                 </div>
-                    </v-card>
+              </v-card>
             </v-col>
           </v-row>
 
+                      
           
-            
-          
-
-
-          
-
-          <!-- 1번째 줄 -->
-          <!--v-row style="padding-top:20px;">
-            <v-col v-for="n in 2" :key="n" cols="6" >
-              <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
-              <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
-              <v-select
-                :items="selectList"
-                dense
-                hide-details
-                outlined
-                style="width:50%; padding-bottom: 20px;"
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-divider ></v-divider-->
-
-          <!-- 3번째 줄 -->
-          <!--v-row style="padding-top:20px;">
-            <v-col v-for="n in 2" :key="n" cols="6" >
-              <div style="font-size: 1.2rem; font-weight: bold;padding-bottom:5px;">암호화 시점</div>
-              <div style="font-size: 0.8rem; padding-bottom:5px;">암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.</div>
-              <v-select
-                :items="selectList"
-                dense
-                hide-details
-                filled
-                rounded
-                style="width:50%; padding-bottom: 20px; background-color:white;"
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-divider ></v-divider-->
-
           
           
 
@@ -538,6 +686,12 @@
         switch2:false,
         switch3:false,
         switch4:false,
+        switch5:false,
+        switch6:false,
+        switch7:false,
+        switch8:false,
+        switch9:false,
+        switch10:false,
         possibleList: [
           {no:'0000001', range:'임직원', dialog:false },
         ],  
@@ -655,4 +809,15 @@
   list-style: none;
   padding-left: 0px !important;
 }
+.contents_sub-title{
+  text-align:center; font-weight:bold;
+}
+.contents_sub-title-border{
+  border-bottom:1px solid #95aac9;
+}
+.margin-padding-zero{
+  margin: 0;
+  padding: 0;
+}
+
 </style>
