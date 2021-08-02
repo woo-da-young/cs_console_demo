@@ -51,12 +51,12 @@
 
         <v-card class="mx-auto" max-width="344" outlined > 
           <v-list-item><div class="text-overline">SOFTCAMP</div></v-list-item>
-          <v-list-item three-line>
+          <v-list-item two-line>
             <v-list-item-avatar size="90" color="primary"> <span class="white--text text-h5">관리자</span></v-list-item-avatar>
             <v-list-item-content>
               <div class="text-overline">관리자</div>
               <v-list-item-title class="mb-1">Admin@softcamp.co.kr</v-list-item-title>
-              <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+              <v-list-item-subtitle><a href="#">계정정보보기</a></v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
            <v-list-item><div style="width: 100%"><v-btn style="background-color:#eee;" text width="100%">로그아웃</v-btn></div> </v-list-item>
