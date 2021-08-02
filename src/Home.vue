@@ -159,7 +159,7 @@
 
 
         <!-- 메인 화면 -->
-        <div style="width:(100% - 300px);">
+        <div style="width: calc(100vw - 300px); display: table-cell">
           <v-row>
             <v-col cols="12" style="margin-top:10px;">
               <!-- <v-divider style="height:5px"></v-divider> -->

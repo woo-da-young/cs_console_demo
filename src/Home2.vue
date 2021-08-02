@@ -23,7 +23,7 @@
           <v-col cols="10" style="padding:30px;">
             <v-card class="mx-auto">
               <v-list-item>
-                <v-list-item-content style="font-size:1.4rem; ">                                          
+                <v-list-item-content style="font-size:1.4rem; font-weight:bold">                                          
                   <v-row align="center" justify="space-around">
                     <v-col>기본 암호화 정책</v-col>
                     <v-col align="right" justify="space-around">  
@@ -110,13 +110,13 @@
                 <v-col style="padding-top:30px;" >
                     <v-card>
                       <v-list-item>
-                        <v-list-item-content style="font-size:1.4rem; ">
+                        <v-list-item-content style="font-size:1.4rem; font-weight:bold ">
                           <v-row align="center" justify="space-around">
                             <v-col cols="8">암호화 가능 범주</v-col>
                             <v-col cols="4" align="right" justify="space-around">  
                               <v-dialog v-model="dialog"  max-width="800" >
                                 <template v-slot:activator="{ on, attrs }"><v-btn color="primary" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn></template>
-                                <v-card style="overflow-x: hidden;">
+                                <v-card style="overflow-x: hidden;min-height: 500px">
                                   <v-list-item>
                                     <v-list-item-content style="font-size:1.4rem; ">
                                         <v-row align="center" justify="space-around" >
@@ -127,7 +127,7 @@
                                             </v-tooltip>
                                           </v-col>
                                           <v-col cols="4" align="right" justify="space-around">
-                                            <v-btn color="primary" @click="snackbar = true;dialog=false;"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
+                                            <v-btn color="primary" @click="snackbar = true;dialog=false;rangeSelectedItem=false;"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
                                             <v-snackbar v-model="snackbar" dark color="#333">
                                               저장되었습니다.
                                               <template v-slot:action="{ attrs }">
@@ -142,22 +142,22 @@
                                   
                                   <v-list-item style="background-color:#F9FBFD">
                                       <v-row align="center" justify="space-around">
-                                        <v-col cols="4" ><input type="checkbox" style="border:2px solid #ddd;  border-radius: 50%;" class="chcheck" /></v-col>
-                                        <v-col cols="4">범주ID</v-col>
-                                        <v-col cols="4">범주명</v-col>
+                                        <v-col cols="6">범주ID</v-col>
+                                        <v-col cols="6">범주명</v-col>
                                       </v-row>
                                   </v-list-item>
                                   <v-divider></v-divider>
+                                  <v-list-item-group v-model="rangeSelectedItem">
                                   <div v-for="item in rangeList" :key="item.no">
                                     <v-list-item>
-                                        <v-row align="center">
-                                          <v-col cols="4" ><input type="checkbox" style="border:2px solid #ddd;  border-radius: 50%;" class="chcheck" /></v-col>
-                                          <v-col cols="4">{{item.no}}</v-col>
-                                          <v-col cols="4">{{item.range}}</v-col>
+                                        <v-row align="center">                                          
+                                          <v-col cols="6">{{item.no}}</v-col>
+                                          <v-col cols="6">{{item.range}}</v-col>
                                         </v-row>
                                     </v-list-item>
                                     <v-divider></v-divider> 
                                   </div>
+                                  </v-list-item-group>
                                   <!--<v-list-item style="background-color:#F9FBFD">
                                       <v-row align="center" justify="space-around">
                                         <v-col cols="4" ><v-checkbox v-model="checkbox" value="primary" hide-details ></v-checkbox></v-col>
@@ -231,7 +231,7 @@
                 <v-col style="padding-top:30px;">
                   <v-card>
                     <v-list-item>
-                      <v-list-item-content style="font-size:1.4rem; ">
+                      <v-list-item-content style="font-size:1.4rem; font-weight:bold">
                           <v-row align="center" justify="space-around" >
                             <v-col cols="8">접근대상 지정 그룹</v-col>
                             <v-col cols="4" align="right" justify="space-around">
@@ -347,7 +347,8 @@ import LeftNav from '../src/components/LeftNav.vue'
         dialog2: false,
         snackbar: false,
         checkbox: [],
-        singleSelect: false
+        singleSelect: false,
+        rangeSelectedItem:false
       }
     },
     methods: {
