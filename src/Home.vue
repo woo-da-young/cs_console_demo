@@ -200,7 +200,7 @@
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch1 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch1 === true"><span class="enable-font">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>         
             </v-col>
@@ -217,7 +217,7 @@
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch2 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch2 === true"><span class="enable-font">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>  
             </v-col>
@@ -248,7 +248,7 @@
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch3 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch3 === true"><span class="enable-font">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>  
             </v-col>
@@ -268,7 +268,7 @@
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch4 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch4 === true"><span class="enable-font">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
@@ -293,7 +293,7 @@
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch5 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch5 === true"><span class="enable-font">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
@@ -305,7 +305,7 @@
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch6 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch6 === true"><span class="enable-font">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
@@ -317,7 +317,7 @@
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch7 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch7 === true"><span class="enable-font">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
@@ -329,7 +329,7 @@
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch8 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch8 === true"><span class="enable-font">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
@@ -353,7 +353,7 @@
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch10 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch10 === true"><span class="enable-font">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
@@ -756,6 +756,10 @@
 .margin-padding-zero{
   margin: 0;
   padding: 0;
+}
+.enable-font {
+  color: #000;
+  font-weight: bold;
 }
 
 </style>
