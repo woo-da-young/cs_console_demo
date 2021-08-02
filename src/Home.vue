@@ -302,7 +302,7 @@
                 </ul>
               </div>
             </v-col>
-            <v-col cols="6" class="margin-padding-zero">
+            <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title contents_sub-title-border">읽기</div>
               <v-switch
                 v-model="switch5"
@@ -314,7 +314,7 @@
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
-            <v-col cols="6" class="margin-padding-zero">
+            <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title contents_sub-title-border">편집</div>
               <v-switch
                 v-model="switch6"
@@ -364,93 +364,6 @@
             </v-col>
             <v-col cols="6" >
               <div class="contents_sub-title">권한변경</div>
-              <v-switch
-                v-model="switch10"
-                 inset 
-                hide-details                
-                class="v-switch-style"
-              >
-                <template v-slot:label v-if="switch10 === true"><span style="color: #000">사용</span></template>
-                <template v-slot:label v-else><span>미사용</span></template>
-              </v-switch>
-            </v-col>
-          </v-row>
-          <!-- 생성자 권한 끝 -->
-
-<v-divider></v-divider>
-          <!-- 생성자 권한 시작 -->
-          <v-row class="contents_layout">
-            <v-col cols="12" >
-              <div class="contents_title">생성자 권한</div>
-              <div class="contents_comment">
-                <ul class="contents_comment-ul">
-                  <li>문서 생성자의 보안문서 사용 권한을 설정합니다. 읽기, 편집, 해제, 반출, 출력, 마킹, 권한변경 등의 권한을 설정할 수 있습니다. </li>
-                  <li>참고: 일반 문서의 경우, 반출 권한과 상관없이 외부 전송용 보안 파일을 생성할 수 있습니다. </li>
-                </ul>
-              </div>
-            </v-col>
-            <v-col cols="3" >
-              <div class="contents_sub-title contents_sub-title-border">읽기</div>
-              <v-switch
-                v-model="switch5"
-                 inset 
-                hide-details                
-                class="v-switch-style"
-              >
-                <template v-slot:label v-if="switch5 === true"><span style="color: #000">사용</span></template>
-                <template v-slot:label v-else><span>미사용</span></template>
-              </v-switch>
-            </v-col>
-            <v-col cols="3" >
-              <div class="contents_sub-title contents_sub-title-border">편집</div>
-              <v-switch
-                v-model="switch6"
-                 inset 
-                hide-details                
-                class="v-switch-style"
-              >
-                <template v-slot:label v-if="switch6 === true"><span style="color: #000">사용</span></template>
-                <template v-slot:label v-else><span>미사용</span></template>
-              </v-switch>
-            </v-col>
-            <v-col cols="3" >
-              <div class="contents_sub-title contents_sub-title-border">해제</div>
-              <v-switch
-                v-model="switch7"
-                 inset 
-                hide-details                
-                class="v-switch-style"
-              >
-                <template v-slot:label v-if="switch7 === true"><span style="color: #000">사용</span></template>
-                <template v-slot:label v-else><span>미사용</span></template>
-              </v-switch>
-            </v-col>
-            <v-col cols="3" >
-              <div class="contents_sub-title contents_sub-title-border">반출</div>
-              <v-switch
-                v-model="switch8"
-                 inset 
-                hide-details                
-                class="v-switch-style"
-              >
-                <template v-slot:label v-if="switch8 === true"><span style="color: #000">사용</span></template>
-                <template v-slot:label v-else><span>미사용</span></template>
-              </v-switch>
-            </v-col>
-            <v-col cols="3" >
-              <div class="contents_sub-title contents_sub-title-border">마킹</div>
-              <v-switch
-                v-model="switch9"
-                 inset 
-                hide-details                
-                class="v-switch-style"
-              >
-                <template v-slot:label v-if="switch9 === true"><span style="color: #000">사용</span></template>
-                <template v-slot:label v-else><span>미사용</span></template>
-              </v-switch>
-            </v-col>
-            <v-col cols="3" >
-              <div class="contents_sub-title contents_sub-title-border">권한변경</div>
               <v-switch
                 v-model="switch10"
                  inset 
