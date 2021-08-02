@@ -182,7 +182,7 @@
               </v-switch>         
             </v-col>
           </v-row>
-          <v-divider></v-divider>
+
           <v-row class="contents_layout">
             <!-- 2 -->
             <v-col cols="6" >
@@ -209,7 +209,7 @@
               ></v-select>       
             </v-col>
             </v-row>
-          <v-divider></v-divider>
+
           <v-row class="contents_layout">
             <!-- 3 -->
             <v-col cols="6" >
@@ -240,8 +240,7 @@
             </v-col>
           </v-row>
           <v-divider></v-divider>        
-
-          <v-row>
+          <v-row class="contents_layout">
             <v-col cols="6" >
             <!-- <v-container> -->
                     <v-card style="background-color:#F9FBFD" >
@@ -251,7 +250,7 @@
                               align="center"
                               justify="space-around"
                             >
-                              <v-col cols="8">암호화 가능 범주</v-col>
+                              <v-col cols="8" style="font-weight:bold" >암호화 가능 범주</v-col>
                               <v-col cols="4" align="right" justify="space-around">  
                                 
                                 <v-dialog v-model="dialog" persistent max-width="800">
@@ -338,7 +337,64 @@
                     </v-card> 
           <!-- </v-container> -->
             </v-col>
-            </v-row>
+            <v-col cols="6" >
+              <v-card style="background-color:#F9FBFD">
+                <v-list-item>
+                  <v-list-item-content style="font-size:1.4rem; ">
+                      <v-row align="center" justify="space-around" >
+                        <v-col cols="8">접근대상 지정 그룹</v-col>
+                        <v-col cols="4" align="right" justify="space-around">
+                          <v-dialog v-model="dialog2" persistent max-width="800">
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-btn color="primary" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
+                            </template>
+                            <v-card>
+                              <v-card-title class="text-h5">범주 추가</v-card-title>
+                                <v-card-text>
+                                  해당 사용자 및 그룹이 보안문서 생성 시 접근 권한을 지정합니다.
+                                </v-card-text>
+                              <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn color=" darken-1" text @click="dialog2 = false">아니요</v-btn>
+                                <v-btn color="blue darken-1" text @click="deleteAccess(dialog2)">네</v-btn>
+                              </v-card-actions>
+                            </v-card>
+                          </v-dialog>  
+                        </v-col>
+                      </v-row>
+                  </v-list-item-content>
+                </v-list-item>
+              <v-divider></v-divider>                    
+                  <div v-for="(item,index) in accessList" :key="item.range">
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-row>
+                        <v-col cols="8">{{item.range}}</v-col>
+                        <v-col cols="4" align="right">
+                          <v-dialog v-model="item.dialog" persistent max-width="500">
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-icon color="red" v-bind="attrs" v-on="on">mdi-delete</v-icon>
+                            </template>
+                            <v-card>
+                              <v-card-title class="text-h5">삭제하시겠습니까?</v-card-title>
+                              <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn color=" darken-1" text @click="item.dialog = false">아니요</v-btn>
+                                <v-btn color="blue darken-1" text @click="deleteAccess(index)">네</v-btn>
+                              </v-card-actions>
+                            </v-card>
+                          </v-dialog>
+                        </v-col>
+                      </v-row>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-divider></v-divider>
+                </div>
+                    </v-card>
+            </v-col>
+          </v-row>
+
+          
             
           
 
