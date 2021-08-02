@@ -132,85 +132,57 @@
         <v-divider></v-divider>
 
         <!-- 메뉴 리스트 -->
-        <v-card
-          width="300px"
-          style="float:left; background-color:#F9FBFD"
-          flat
-          height="100vh"
-          background-color="#F9FBFD"
-        >
-          <v-list height="100vh;" color="#F9FBFD">
-            <!--<v-list-group
-              v-for="item in items"
-              :key="item.title"
-              v-model="item.active"
-              :prepend-icon="item.action"
-              no-action
-              style="background-color:#F9FBFD;"
-            >
-              <template v-slot:activator >
-                <v-list-item-content>
-                  <v-list-item-title v-text="item.title" ></v-list-item-title>
-                </v-list-item-content>
-              </template>
-              <v-list-item
-                style="background-color:#F9FBFD;"
-                v-for="child in item.items"
-                :key="child.title"
-              >
-                <v-list-item-content>
-                  <v-list-item-title v-text="child.title"></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-group>-->
-
-            <v-list-item-group color="primary" v-model="listOn" mandatory>
-              <div v-for="(item, i) in items" :key="i">
-                <v-list-group v-if="item.items && item.items.length > 0"
-                  
-                  :prepend-icon="item.action"
-                  no-action
-                  style="background-color:#F9FBFD;"
-                >
-                  <template v-slot:activator >
-                    <v-list-item-content>
-                      <v-list-item-title v-text="item.title" ></v-list-item-title>
-                    </v-list-item-content>
-                  </template>
-                  
-                  <v-list-item
+        
+        <div style="display: table">
+          <v-card
+            width="300px"
+            style="background-color:#F9FBFD;display: table-cell"
+            flat
+            background-color="#F9FBFD"
+          >
+            <v-list color="#F9FBFD">
+              <v-list-item-group color="primary" v-model="listOn" mandatory>
+                <div v-for="(item, i) in items" :key="i">
+                  <v-list-group v-if="item.items && item.items.length > 0"
+                    :prepend-icon="item.action"
+                    no-action
                     style="background-color:#F9FBFD;"
-                    v-for="child in item.items"
-                    :key="child.title"
-                    v-model="child.active"
                   >
+                    <template v-slot:activator >
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item.title" ></v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item
+                      style="background-color:#F9FBFD;"
+                      v-for="child in item.items"
+                      :key="child.title"
+                      v-model="child.active"
+                    >
+                      <v-list-item-content>
+                        <v-list-item-title v-text="child.title"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+
+                  <v-list-item  v-else >
+                    <v-list-item-icon>
+                      <v-icon v-text="item.action"></v-icon>
+                    </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title v-text="child.title"></v-list-item-title>
+                      <v-list-item-title v-text="item.title"></v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
-                </v-list-group>
-
-                 <v-list-item  v-else >
-                  <v-list-item-icon>
-                    <v-icon v-text="item.action"></v-icon>
-                  </v-list-item-icon>
-                  <v-list-item-content>
-                    <v-list-item-title v-text="item.title"></v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                
-              </div>
-            </v-list-item-group>
-
-            
-
-
-          </v-list>
-        </v-card>
+                </div>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
         
+
+
+
         <!-- 메인 화면 -->
         <div style="width:(100% - 300px);">
-          
           <v-row>
             <v-col cols="12" style="margin-top:10px;">
               <!-- <v-divider style="height:5px"></v-divider> -->
@@ -282,7 +254,7 @@
                 class="v-select-style"
               ></v-select>       
             </v-col>
-            </v-row>
+          </v-row>
 
           <v-row class="contents_layout">
             <!-- 3 -->
@@ -578,15 +550,9 @@
               </v-card>
             </v-col>
           </v-row>
-
-                      
-          
-          
-          
-
+        </div>
         </div>
 
-          
       </v-container>    
     </v-main>  
 
