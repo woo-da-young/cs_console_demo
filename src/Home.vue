@@ -142,15 +142,14 @@
         <div style="width:(100% - 300px);">
           
           <v-row>
-            <v-col cols="12" style="margin-top:10px; ">
+            <v-col cols="12" style="margin-top:10px;">
               <!-- <v-divider style="height:5px"></v-divider> -->
               <v-row style="border-bottom: 1px solid #ccc;">
-                <v-col cols="2" style="padding: 0;">
-                  <v-btn text width="100%" style="display:block" ><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
+                <v-col cols="1" style="padding: 0;">
+                  <v-btn text width="100%" style="display:block" ><v-icon left>mdi-pencil</v-icon>수정</v-btn>
                 </v-col>
-                <v-col cols="2" style="padding: 0">
-                  <v-icon>mdi-close</v-icon>
-                  <v-btn text >취소</v-btn>
+                <v-col cols="1" style="padding: 0">
+                  <v-btn text width="100%" style="display:block" ><v-icon left>mdi-close</v-icon>취소</v-btn>
                 </v-col>
               </v-row>
             </v-col>
