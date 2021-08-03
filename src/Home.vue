@@ -208,19 +208,18 @@
 
         <!-- 메인 화면 -->
         <div style="width: calc(100vw - 300px);">
-          <v-row style="border-bottom: 1px solid #ccc; padding-top:10px;">
-             <v-col cols="2" style="padding: 0;">
+          <v-row style="border-bottom: 1px solid #ccc; margin:0; padding:0">
+             <v-col cols="1" style="padding: 0;">
                   <v-btn text width="100%" style="display:block" v-if="disabledBtn" @click="snackbar = true;disabledBtn = false" ><v-icon left>mdi-pencil</v-icon>수정</v-btn>
                   <v-btn text width="100%" style="display:block" v-else disabled ><v-icon left>mdi-pencil</v-icon>수정</v-btn>
                   <v-snackbar v-model="snackbar" dark color="#333">저장되었습니다.
                     <template v-slot:action="{ attrs }"><v-btn color="#47B8F5" text v-bind="attrs" @click="snackbar = false" >닫기</v-btn></template>
                   </v-snackbar>
                 </v-col>
-                <v-col cols="2" style="padding: 0">
+                <v-col cols="1" style="padding: 0">
                   <v-btn text width="100%" style="display:block" v-if="disabledBtn" @click="disabledBtn = false;select=false;"><v-icon left>mdi-close</v-icon>취소</v-btn>
                   <v-btn text width="100%" style="display:block" v-else disabled><v-icon left>mdi-close</v-icon>취소</v-btn>
-                </v-col>
-            
+                </v-col>            
           </v-row>
           <!-- 1번째 줄 -->
           <v-row class="contents_layout">
