@@ -261,7 +261,7 @@
                                   </v-card-actions>
                                 </v-card>
                               </v-dialog>   -->
-                              <v-dialog v-model="dialog"  max-width="800" >
+                              <v-dialog v-model="dialog2"  max-width="800" >
                                 <template v-slot:activator="{ on, attrs }"><v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>edit</v-btn></template>
                                 <v-card style="overflow-x: hidden;min-height: 500px">
                                   <v-list-item>
