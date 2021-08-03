@@ -481,7 +481,7 @@
           
           <v-row>
                 <v-col style="padding-top:30px;" >
-                    <v-card style="background-color:#F9FBFD" outlined>
+                    <v-card style="background-color:#F9FBFD" >
                       <v-list-item>
                         <v-list-item-content style="font-size:1.4rem; font-weight:bold ">
                           <v-row align="center" justify="space-around">
