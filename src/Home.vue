@@ -477,7 +477,15 @@
                       <v-list-item>
                         <v-list-item-content style="font-size:1.4rem; font-weight:bold ">
                           <v-row align="center" justify="space-around">
-                            <v-col cols="8" class="contents_title">암호화 가능 범주</v-col>
+                            <v-col cols="8" class="contents_title">
+                              암호화 가능 범주
+                              <div class="contents_comment" style="padding-top:5px">
+                                <ul class="contents_comment-ul" style=" font-weight:normal;">
+                                  <li>범주 보안 문서 생성 시 사용 가능한 범주 정책</li>
+                                </ul>
+                              </div>
+                            </v-col>
+                            
                             <v-col cols="4" align="right" justify="space-around">  
                               <v-dialog v-model="dialog"  max-width="800" >
                                 <template v-slot:activator="{ on, attrs }"><v-btn text v-bind="attrs" v-on="on" ><v-icon left>mdi-pencil</v-icon>추가</v-btn></template>
@@ -588,7 +596,13 @@
                     <v-list-item>
                       <v-list-item-content style="font-size:1.4rem; font-weight:bold">
                           <v-row align="center" justify="space-around" >
-                            <v-col cols="8" class="contents_title">접근대상 지정 그룹</v-col>
+                            <v-col cols="8" class="contents_title">접근대상 지정 그룹
+                              <div class="contents_comment" style="padding-top:5px">
+                                <ul class="contents_comment-ul" style=" font-weight:normal;">
+                                  <li>접근 대상자를 지정하여 문서 암호화 시 선택 가능한 그룹</li>
+                                </ul>
+                              </div>
+                            </v-col>
                             <v-col cols="4" align="right" justify="space-around">
                               <!-- <v-dialog v-model="dialog2" persistent max-width="800">
                                 <template v-slot:activator="{ on, attrs }">
