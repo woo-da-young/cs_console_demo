@@ -274,7 +274,7 @@
                                             </v-tooltip>
                                           </v-col>
                                           <v-col cols="4" align="right" justify="space-around">
-                                            <v-btn color="primary" @click="saveRange()" v-if="rangeSelectedItem || rangeSelectedItem === 0"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
+                                            <v-btn color="primary" @click="saveGroup()" v-if="groupSelectedItem || groupSelectedItem === 0"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
                                             <v-btn color="primary" disabled v-else><v-icon left>mdi-pencil</v-icon>Save</v-btn>
                                             <v-snackbar v-model="snackbar" dark color="#333">
                                               저장되었습니다.
@@ -288,19 +288,30 @@
                                   </v-list-item>
                                   <v-divider></v-divider>
                                   
+                                  <v-list-item>
+                                    <v-row align="center">
+                                      <v-col cols="6" offset="2">
+                                        <v-text-field prepend-inner-icon="mdi-magnify" dense style="padding-top : 10px" v-model="searchTxt"></v-text-field>
+                                      </v-col>
+                                      <v-col cols="3">
+                                        <v-btn color="success" ><v-icon left>mdi-magnify</v-icon>search</v-btn>
+                                      </v-col>
+                                    </v-row>
+                                        
+                                  </v-list-item>
+                                   <v-divider></v-divider>
+
                                   <v-list-item style="background-color:#F9FBFD">
                                       <v-row align="center" justify="space-around">
-                                        <v-col cols="6">범주ID</v-col>
-                                        <v-col cols="6">범주명</v-col>
+                                        <v-col cols="12">그룹명</v-col>
                                       </v-row>
                                   </v-list-item>
                                   <v-divider></v-divider>
-                                  <v-list-item-group v-model="rangeSelectedItem">
-                                  <div v-for="item in rangeList" :key="item.no">
+                                  <v-list-item-group v-model="groupSelectedItem">
+                                  <div v-for="item in searchList" :key="item.range">
                                     <v-list-item>
                                         <v-row align="center">                                          
-                                          <v-col cols="6">{{item.no}}</v-col>
-                                          <v-col cols="6">{{item.range}}</v-col>
+                                          <v-col cols="12">{{item.range}}</v-col>
                                         </v-row>
                                     </v-list-item>
                                     <v-divider></v-divider> 
@@ -459,14 +470,21 @@ import LeftNav from '../src/components/LeftNav.vue'
         possibleList: [
           {no:'0000001', range:'임직원', dialog:false },
         ],  
-        accessList: [
-          {range:'SECURITY DAMAIN', dialog:false },
-          {range:'SOFT CAMP', dialog:false }
-        ],  
         rangeList: [
           {no:'0000002', range:'외주', dialog:false },
           {no:'0000003', range:'임원', dialog:false },
         ],
+        accessList: [
+          {range:'SECURITY DAMAIN', dialog:false },
+          {range:'SOFT CAMP', dialog:false }
+        ],  
+        searchList: [
+          {range:'보안팀', dialog:false },
+          {range:'사업부', dialog:false },
+          {range:'연구소', dialog:false },
+          {range:'퇴사자부서', dialog:false },
+          {range:'MX 사업본부', dialog:false }
+        ],  
         dialog: false,
         dialog2: false,
         snackbar: false,
@@ -476,12 +494,17 @@ import LeftNav from '../src/components/LeftNav.vue'
         subListOn: 1,
         listOn: 3,
         disabledBtn: null,
-        select: null
+        select: null,
+        groupSelectedItem:false,
+        searchTxt:null
       }
     },
     watch: {
       select: function () {
         this.disabledBtn = this.select
+      },
+      searchTxt: function() {
+        this.searchList.splice(1, 4);
       }
     },
     methods: {
@@ -502,6 +525,13 @@ import LeftNav from '../src/components/LeftNav.vue'
         this.possibleList.push(this.rangeList[this.rangeSelectedItem]);
         this.rangeList.splice(this.rangeSelectedItem, 1);
         this.rangeSelectedItem=false;
+      },
+      saveGroup(){
+        this.snackbar = true;
+        this.dialog=false;
+        this.accessList.push(this.searchList[this.groupSelectedItem]);
+        this.searchList.splice(this.groupSelectedItem, 1);
+        this.groupSelectedItem=false;
       }
     }
   }
