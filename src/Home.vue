@@ -487,7 +487,7 @@
                           <v-row align="center" justify="space-around">
                             <v-col cols="8" class="contents_title">
                               암호화 가능 범주
-                              <div class="contents_comment" style="padding-top:5px">
+                              <div class="contents_comment" style="padding-top:10px">
                                 <ul class="contents_comment-ul" style=" font-weight:normal;">
                                   <li>사용자의 범주 보안문서 생성 시 선택 가능한 범주 목록을 지정 할 수 있습니다.</li>
                                 </ul>
@@ -605,7 +605,7 @@
                       <v-list-item-content style="font-size:1.4rem; font-weight:bold">
                           <v-row align="center" justify="space-around" >
                             <v-col cols="8" class="contents_title">접근대상 지정 그룹
-                              <div class="contents_comment" style="padding-top:5px">
+                              <div class="contents_comment" style="padding-top:10px">
                                 <ul class="contents_comment-ul" style=" font-weight:normal;">
                                   <li>사용자가 보안문서 생성시 접근권한을 지정할 수 있도록 조직의 범위를 설정할 수 있습니다.</li>
                                 </ul>
