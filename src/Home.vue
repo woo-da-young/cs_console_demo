@@ -397,7 +397,7 @@
                                         <v-row align="center" justify="space-around" >
                                           <v-col cols="8" >
                                             <v-tooltip bottom>
-                                              <template v-slot:activator="{ on, attrs }">범주 선택<v-icon right color="#47B8F5" v-bind="attrs" v-on="on" style="padding-bottom:4px;">mdi-alert-circle-outline</v-icon></template>
+                                              <template v-slot:activator="{ on, attrs }">범주 선택<v-icon right color="gray" v-bind="attrs" v-on="on" style="padding-bottom:4px;">mdi-alert-circle-outline</v-icon></template>
                                               <span> 보안문서 생성 시 선택 가능한 범주를 설정하십시오.<br> 아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다.</span>
                                             </v-tooltip>
                                           </v-col>
@@ -686,7 +686,7 @@
           },
           {
             action: 'mdi-tag',
-            title: '라이선스 정책',
+            title: 'CSLinker 라이선스',
           },
           {
             action: 'mdi-tag',
