@@ -9,11 +9,7 @@
         <v-list rounded nav>
           <v-list-item-group color="primary" v-model="selectedItem" mandatory >
             <div v-for="(item, i) in items" :key="i">
-              <v-list-group v-if="item.items && item.items.length > 0"
-                no-action
-                mandatory
-                :prepend-icon="item.action"
-              >
+              <v-list-group v-if="item.items && item.items.length > 0" no-action mandatory :prepend-icon="item.action" >
                 <template v-slot:activator >
                   <v-list-item-content>
                     <v-list-item-title v-text="item.title" ></v-list-item-title>
