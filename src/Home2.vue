@@ -188,7 +188,7 @@
                                   </v-list-item>
                                   <v-divider></v-divider>
                                   
-                                  <v-list-item style="background-color:#F9FBFD">
+                                  <v-list-item style="background-color:#F9FBFD;font-weight: bold">
                                       <v-row align="center" justify="space-around">
                                         <v-col cols="6">범주명</v-col>
                                         <v-col cols="6">범주ID</v-col>
@@ -215,11 +215,10 @@
                       </v-list-item>
                       <v-divider></v-divider>
 
-                      <v-list-item style="background-color:#F9FBFD">
+                      <v-list-item style="background-color:#F9FBFD;font-weight: bold">
                           <v-row align="center" justify="space-around">
                             <v-col cols="4">범주명</v-col>
-                            <v-col cols="4">범주ID</v-col>
-                            <v-col cols="4" align="right">삭제</v-col>
+                            <v-col cols="8">범주ID</v-col>
                           </v-row>
                       </v-list-item>
                       <v-divider></v-divider>
@@ -328,7 +327,7 @@
                                   </v-list-item>
                                    <v-divider></v-divider>
 
-                                  <v-list-item style="background-color:#F9FBFD">
+                                  <v-list-item style="background-color:#F9FBFD;font-weight: bold">
                                       <v-row align="center" justify="space-around">
                                         <v-col cols="12">그룹명</v-col>
                                       </v-row>
@@ -353,10 +352,9 @@
                     </v-list-item>
                     <v-divider></v-divider>
 
-                     <v-list-item style="background-color:#F9FBFD">
+                     <v-list-item style="background-color:#F9FBFD;font-weight: bold">
                           <v-row align="center" justify="space-around">
-                            <v-col cols="8">그룹명</v-col>
-                            <v-col cols="4" align="right">삭제</v-col>
+                            <v-col cols="12">그룹명</v-col>
                           </v-row>
                       </v-list-item>
                       <v-divider></v-divider>
