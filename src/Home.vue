@@ -205,7 +205,12 @@
             </v-col>
             <v-col  cols="6" >
               <div class="contents_title">단순 암호화 사용</div>
-              <div class="contents_comment">단순 암호화 기능의 사용 여부를 설정 할 수 있습니다.</div>
+              <div class="contents_comment">
+                <ul class="contents_comment-ul">
+                  <li>문서보안에서 지원하지 않는 확장자를 암호화 합니다.</li>
+                  <li>DSD 확장자로 암호화 되며, 접근대상자에 포함된 사용자가 해당 파일 열람 시 복호화 됩니다.</li>
+                 </ul>
+              </div>
               <v-switch
                 v-model="switch1" 
                 inset 
@@ -269,10 +274,9 @@
               <div class="contents_comment">
                 <ul class="contents_comment-ul">
                   <li>사용하면 DAC 문서 오픈 시 생성자 권한을 적용합니다</li>
+                  <li>보안문서 생성 시 생성자 권한과 현재 생성자 권한 중 로그인 생성자 권한으로 생성자 권한 적용 여부</li>
+                  <li>예: 작년에 생성자 권한에 해제 권한이 없고 현재는 해재 권한이 있을 경우 현재의 권한으로 해제 하려면 체크</li>
                 </ul>
-                암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.
-                암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.
-                암호화 시점을 지정합니다.<br>문서 편집기의 종료시점을 지원하여 MS 오피스의 경우 저장 시점도 지원합니다.
               </div>
               <v-switch
                 v-model="switch4"
@@ -561,16 +565,17 @@
         selectedItem: 1,
         navs: [
           {icon: 'mdi-home', title: '홈'},
+          {icon: 'mdi-hammer-wrench', title: '조직관리'},
           {icon: 'mdi-folder', title: '정책관리'},
-          {icon: 'mdi-shield-check', title: '보안감사'},
+          // {icon: 'mdi-shield-check', title: '보안감사'},
           {icon: 'mdi-hammer-wrench', title: '관리도구'},
-          {icon: 'mdi-clipboard-account', title: '관리자정책'},
+          // {icon: 'mdi-clipboard-account', title: '관리자정책'},
           {icon: 'mdi-cog-outline', title: '환경설정'}
         ],
         items: [
         {
           action: 'mdi-ticket',
-          title: '기본정보',
+          title: '기본 정보',
         },
         {
           action: 'mdi-silverware-fork-knife',          
