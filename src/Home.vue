@@ -1,6 +1,6 @@
 <template>
 
-  <v-app class="app-main softcamp-font-regulars">
+  <v-app class="app-main softcamp-font-regular" >
     
     <!-- 상단바 -->
     <v-app-bar
@@ -481,7 +481,7 @@
           
           <v-row>
                 <v-col style="padding-top:30px;" >
-                    <v-card style="background-color:#F9FBFD">
+                    <v-card style="background-color:#F9FBFD" outlined>
                       <v-list-item>
                         <v-list-item-content style="font-size:1.4rem; font-weight:bold ">
                           <v-row align="center" justify="space-around">
@@ -505,7 +505,7 @@
                                         <v-row align="center" justify="space-around" >
                                           <v-col cols="12" class="contents_title">
                                             <div class="contents_title" style="padding:5px">범주 선택 </div>
-                                              <div class="contents_comment" style="padding:5px">
+                                              <div class="contents_comment" style="padding:5px; font-weight:normal">
                                                 <ul class="contents_comment-ul">
                                                   <li>보안문서 생성 시 선택 가능한 범주를 설정하십시오.</li>
                                                   <li>아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다.</li>
