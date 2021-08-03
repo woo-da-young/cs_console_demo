@@ -30,27 +30,30 @@
       style="padding-top:25px;"
     ></v-text-field>
      
-     <v-btn class="white--text " text >
-       <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          src="https://zero-dev.security365.com/img/logo_SHIELD@Home_Zero.72182f75.svg"
-          contain
-          style="padding:0"
-          width="150px"
-          to="https://zero-dev.security365.com"
-        />
-      </v-btn> 
-
-      <v-btn class="white--text " text >
-       <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          src="https://10.11.10.30:9000/img/img_gatex.d3da0262.png"
-          width="130px"
-        />
-      </v-btn> 
+     <a href="https://zero-dev.security365.com/login" target="_blank">
+        <v-btn class="white--text " text >
+          <v-img
+            alt="Vuetify Name"
+            class="shrink mt-1 hidden-sm-and-down"
+            src="https://zero-dev.security365.com/img/logo_SHIELD@Home_Zero.72182f75.svg"
+            contain
+            style="padding:0"
+            width="150px"
+          />
+        </v-btn> 
+      </a>
+      
+      <a href="https://10.11.10.30:9000" target="_blank">
+        <v-btn class="white--text " text >
+          <v-img
+            alt="Vuetify Name"
+            class="shrink mt-1 hidden-sm-and-down"
+            contain
+            src="https://static.wixstatic.com/media/ea85dc_a75f9463180d4ae5b64a3b5bf6c13d03~mv2.png/v1/fill/w_270,h_48,al_c,lg_1,q_85/x_logo.webp"
+            width="130px"
+          />
+        </v-btn> 
+      </a>
 
     <v-menu
       transition="slide-y-transition"
