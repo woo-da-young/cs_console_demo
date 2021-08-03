@@ -59,7 +59,8 @@
                   <v-row align="center" justify="space-around">
                     <v-col>기본 암호화 정책</v-col>
                     <v-col align="right" justify="space-around">  
-                      <v-btn color="primary" @click="snackbar = true"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
+                      <v-btn color="primary" @click="snackbar = true;disabledBtn = false" v-if="disabledBtn"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
+                      <v-btn color="primary" @click="snackbar = true;disabledBtn = false" disabled v-if="!disabledBtn"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
                         <v-snackbar v-model="snackbar" dark color="#333">저장되었습니다.
                           <template v-slot:action="{ attrs }"><v-btn color="#47B8F5" text v-bind="attrs" @click="snackbar = false" >닫기</v-btn></template>
                         </v-snackbar>
@@ -69,7 +70,7 @@
                 </v-list-item>
                 <v-divider></v-divider>
 
-                <v-list-item v-for="item in basicCryptoItem" :key="item.title">
+                <v-list-item v-for="(item,index) in basicCryptoItem" :key="item.title">
                   <v-list-item-content>
                     <v-row align="center" justify="space-around" >
                       <v-col cols="6">
@@ -81,7 +82,8 @@
                         </v-list-item-title>
                       </v-col>
                       <v-col cols="6">
-                        <v-select :items="item.selectList" dense hide-details style="padding:0px 10px; "></v-select>
+                        <v-select v-if="index === 0" :items="item.selectList" item-text="text" item-value="value" v-model="select" dense hide-details style="padding:0px 10px; "></v-select>
+                        <v-select v-else :items="item.selectList" item-text="text" item-value="value" dense hide-details style="padding:0px 10px; "></v-select>
                       </v-col>
                     </v-row>
                   </v-list-item-content>
@@ -127,8 +129,8 @@
                           <v-row align="center">
                             <v-col cols="6" v-for="item in authList" :key="item.text"> 
                               <v-switch v-model="item.switch" inset  hide-details style="padding:0px 10px; margin-top: 8px;">
-                                <template v-slot:label v-if="item.switch === true"><span style="color: #1976d2">{{item.text}}</span><span style="color: #000"> 사용</span></template>
-                                <template v-slot:label v-else><span style="color: #1976d2; ">{{item.text}}</span><span> 미사용</span></template>
+                                <template v-slot:label v-if="item.switch === true"><span style="color: #1976d2;padding-right: 5px;">{{item.text}}</span><span style="color: #000"> 사용</span></template>
+                                <template v-slot:label v-else><span style="color: #1976d2;padding-right: 5px;">{{item.text}}</span><span> 미사용</span></template>
                               </v-switch>
                             </v-col>
                           </v-row>
@@ -147,7 +149,7 @@
                             <v-col cols="8">암호화 가능 범주</v-col>
                             <v-col cols="4" align="right" justify="space-around">  
                               <v-dialog v-model="dialog"  max-width="800" >
-                                <template v-slot:activator="{ on, attrs }"><v-btn color="primary" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn></template>
+                                <template v-slot:activator="{ on, attrs }"><v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>edit</v-btn></template>
                                 <v-card style="overflow-x: hidden;min-height: 500px">
                                   <v-list-item>
                                     <v-list-item-content style="font-size:1.4rem; ">
@@ -159,7 +161,8 @@
                                             </v-tooltip>
                                           </v-col>
                                           <v-col cols="4" align="right" justify="space-around">
-                                            <v-btn color="primary" @click="snackbar = true;dialog=false;rangeSelectedItem=false;"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
+                                            <v-btn color="primary" @click="saveRange()" v-if="rangeSelectedItem || rangeSelectedItem === 0"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
+                                            <v-btn color="primary" disabled v-else><v-icon left>mdi-pencil</v-icon>Save</v-btn>
                                             <v-snackbar v-model="snackbar" dark color="#333">
                                               저장되었습니다.
                                               <template v-slot:action="{ attrs }">
@@ -190,29 +193,6 @@
                                     <v-divider></v-divider> 
                                   </div>
                                   </v-list-item-group>
-                                  <!--<v-list-item style="background-color:#F9FBFD">
-                                      <v-row align="center" justify="space-around">
-                                        <v-col cols="4" ><v-checkbox v-model="checkbox" value="primary" hide-details ></v-checkbox></v-col>
-                                        <v-col cols="4">범주ID</v-col>
-                                        <v-col cols="4">범주명</v-col>
-                                      </v-row>
-                                  </v-list-item>
-                                  <v-divider></v-divider>
-                                  <div v-for="item in rangeList" :key="item.no">
-                                    <v-list-item>
-                                        <v-row align="center">
-                                          <v-col cols="4" ><v-checkbox v-model="checkbox" :value="item.no" hide-details ></v-checkbox></v-col>
-                                          <v-col cols="4">{{item.no}}</v-col>
-                                          <v-col cols="4">{{item.range}}</v-col>
-                                        </v-row>
-                                    </v-list-item>
-                                    <v-divider></v-divider> -->
-
-                                    
-
-
-                                    
-                                  <!-- <v-card-actions><v-spacer></v-spacer><v-btn text @click="closePossible(dialog);" >닫기</v-btn></v-card-actions>   -->
                                   <v-card-actions></v-card-actions>  
                                 </v-card>
                               </v-dialog>
@@ -267,9 +247,9 @@
                           <v-row align="center" justify="space-around" >
                             <v-col cols="8">접근대상 지정 그룹</v-col>
                             <v-col cols="4" align="right" justify="space-around">
-                              <v-dialog v-model="dialog2" persistent max-width="800">
+                              <!-- <v-dialog v-model="dialog2" persistent max-width="800">
                                 <template v-slot:activator="{ on, attrs }">
-                                  <v-btn color="primary" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>Edit</v-btn>
+                                  <v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>edit</v-btn>
                                 </template>
                                 <v-card>
                                   <v-card-title class="text-h5">범주 추가</v-card-title>
@@ -280,7 +260,55 @@
                                     <v-btn color="blue darken-1" text @click="deleteAccess(dialog2)">네</v-btn>
                                   </v-card-actions>
                                 </v-card>
-                              </v-dialog>  
+                              </v-dialog>   -->
+                              <v-dialog v-model="dialog"  max-width="800" >
+                                <template v-slot:activator="{ on, attrs }"><v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>edit</v-btn></template>
+                                <v-card style="overflow-x: hidden;min-height: 500px">
+                                  <v-list-item>
+                                    <v-list-item-content style="font-size:1.4rem; ">
+                                        <v-row align="center" justify="space-around" >
+                                          <v-col cols="8" >
+                                            <v-tooltip bottom>
+                                              <template v-slot:activator="{ on, attrs }">그룹 선택<v-icon right color="#47B8F5" v-bind="attrs" v-on="on" style="padding-bottom:4px;">mdi-alert-circle-outline</v-icon></template>
+                                              <span> 해당 사용자 및 그룹이 보안문서 생성 시 접근 권한을 지정할 수 있는 그룹을 조직도에서 선택하십시오.</span>
+                                            </v-tooltip>
+                                          </v-col>
+                                          <v-col cols="4" align="right" justify="space-around">
+                                            <v-btn color="primary" @click="saveRange()" v-if="rangeSelectedItem || rangeSelectedItem === 0"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
+                                            <v-btn color="primary" disabled v-else><v-icon left>mdi-pencil</v-icon>Save</v-btn>
+                                            <v-snackbar v-model="snackbar" dark color="#333">
+                                              저장되었습니다.
+                                              <template v-slot:action="{ attrs }">
+                                              <v-btn color="blue" text v-bind="attrs" @click="snackbar=false;dialog=false;">닫기</v-btn>
+                                            </template>
+                                          </v-snackbar>
+                                          </v-col>
+                                        </v-row>
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-divider></v-divider>
+                                  
+                                  <v-list-item style="background-color:#F9FBFD">
+                                      <v-row align="center" justify="space-around">
+                                        <v-col cols="6">범주ID</v-col>
+                                        <v-col cols="6">범주명</v-col>
+                                      </v-row>
+                                  </v-list-item>
+                                  <v-divider></v-divider>
+                                  <v-list-item-group v-model="rangeSelectedItem">
+                                  <div v-for="item in rangeList" :key="item.no">
+                                    <v-list-item>
+                                        <v-row align="center">                                          
+                                          <v-col cols="6">{{item.no}}</v-col>
+                                          <v-col cols="6">{{item.range}}</v-col>
+                                        </v-row>
+                                    </v-list-item>
+                                    <v-divider></v-divider> 
+                                  </div>
+                                  </v-list-item-group>
+                                  <v-card-actions></v-card-actions>  
+                                </v-card>
+                              </v-dialog>
                             </v-col>
                           </v-row>
                       </v-list-item-content>
@@ -397,7 +425,20 @@ import LeftNav from '../src/components/LeftNav.vue'
         ],
         reveal: false,
         basicCryptoItem: [
-          {title: '암호화 시점', tooltip: '문서가 암호화되는 시점을 설정합니다.<br>문서 편집기의 종료시점을 지원하며 MS 오피스의 경우 저장 시점도 지원합니다.', selectList: ['문서편집기 저장시(MS 오피스만 지원)', '문서편집기 종료시']},
+          {
+            title: '암호화 시점', 
+            tooltip: '문서가 암호화되는 시점을 설정합니다.<br>문서 편집기의 종료시점을 지원하며 MS 오피스의 경우 저장 시점도 지원합니다.', 
+            selectList: [
+            {
+              text: '문서편집기 저장시(MS 오피스만 지원)',
+              value: '1'
+            }, 
+            {
+              text: '문서편집기 종료시',
+              value: '2'
+            }
+          ],
+        },
           {title: '작업 종료시 창 표시안함 체크박스', tooltip: '해당 기능을 사용 할 겨우 암호화 문서는 단순 암호화됩니다.', selectList: ['활성화', '비활성화', '감춤', '비활성화(체크)', '비활성화(언체크)', '감춤(체크)', '감춤(언체크)']},
         ],
         authList: [
@@ -423,9 +464,8 @@ import LeftNav from '../src/components/LeftNav.vue'
           {range:'SOFT CAMP', dialog:false }
         ],  
         rangeList: [
-          {checkbox: false, no:'0000001', range:'임직원'},
-          {checkbox: false, no:'0000002', range:'외주'},
-          {checkbox: false, no:'0000003', range:'임원'},
+          {no:'0000002', range:'외주', dialog:false },
+          {no:'0000003', range:'임원', dialog:false },
         ],
         dialog: false,
         dialog2: false,
@@ -434,7 +474,14 @@ import LeftNav from '../src/components/LeftNav.vue'
         singleSelect: false,
         rangeSelectedItem:false,
         subListOn: 1,
-         listOn: 3,
+        listOn: 3,
+        disabledBtn: null,
+        select: null
+      }
+    },
+    watch: {
+      select: function () {
+        this.disabledBtn = this.select
       }
     },
     methods: {
@@ -448,6 +495,13 @@ import LeftNav from '../src/components/LeftNav.vue'
       },
       closePossible() {
         this.dialog = false;
+      },
+      saveRange() {
+        this.snackbar = true;
+        this.dialog=false;
+        this.possibleList.push(this.rangeList[this.rangeSelectedItem]);
+        this.rangeList.splice(this.rangeSelectedItem, 1);
+        this.rangeSelectedItem=false;
       }
     }
   }
