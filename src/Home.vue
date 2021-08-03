@@ -9,9 +9,17 @@
       color="#0575F3"
       height="40px"
     >
-      <v-icon @click.stop="drawer = !drawer" color="#fff">mdi-format-list-bulleted</v-icon>
+      <v-icon @click.stop="drawer = !drawer" color="#fff">mdi-menu</v-icon>
       <div class="logo-sheildd-flex align-center" >
-        <span style="padding-left:10px;color:#fff">SHIELD DRM 웹콘솔</span>
+        <!-- <span style="padding-left:10px;color:#fff">SHIELDRM 웹콘솔</span> -->
+         <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          src="https://static.wixstatic.com/media/ea85dc_6b186c0cb88e4122bb373cf64e3b8ff6~mv2.png/v1/fill/w_215,h_60,al_c,q_85,usm_0.66_1.00_0.01/logo_shieldrm_w.webp"
+          width="110"
+          style="margin-left:10px; margin-bottom:5px;'"
+        />
       </div>
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
@@ -226,9 +234,9 @@
             <v-col cols="6" >
               <div class="contents_title">암호화 시점</div>
               <div class="contents_comment">
-                <v-tooltip bottom :open-on-hover="false">
+                <v-tooltip bottom>
                 <!-- <template v-slot:activator="{ on, attrs }">암호화 시점<v-icon  color="#47B8F5" v-bind="attrs" v-on="on" right>mdi-alert-circle-outline</v-icon></template> -->
-                <template #activator="{ on }">보안문서 생성시 암호화 시점을 설정 할 수 있습니다.<v-icon  color="gray" @click="on.click" style="" right>mdi-alert-circle-outline</v-icon></template>
+                <template v-slot:activator="{ on, attrs }">보안문서 생성시 암호화 시점을 설정 할 수 있습니다.<v-icon  color="gray" v-bind="attrs" v-on="on" style="" right>mdi-alert-circle-outline</v-icon></template>
                   <ul class="contents_comment-ul">
                     <li>문서편집기 저장 시 암호화는 MS Office 계열의 어플리케이션 (예: MS Word, MS PowerPoint, MS Excel)만 지원합니다.</li>
                     <li>여타 어플리케이션은 문서 저장 시에 암호화 여부를 묻는 지 않고, 문서편집기 종료 시에만 암호화 여부를 묻습니다.</li>
