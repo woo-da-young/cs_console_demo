@@ -471,7 +471,7 @@
           
           <v-row>
                 <v-col style="padding-top:30px;" >
-                    <v-card>
+                    <v-card style="background-color:#F9FBFD">
                       <v-list-item>
                         <v-list-item-content style="font-size:1.4rem; font-weight:bold ">
                           <v-row align="center" justify="space-around">
@@ -506,10 +506,11 @@
                                       </v-col>
                                     </v-row>
                                   </v-list-item>
-                                   <v-divider></v-divider>
-                                  <v-list-item style="background-color:#F9FBFD">
-                                      <v-row align="center" justify="space-around">
-                                        <v-col cols="6">범주명</v-col>
+                                  <v-divider></v-divider>
+                                  
+                                  <v-list-item style="background-color:#F9FBFD;font-weight: bold">
+                                      <v-row align="center" justify="space-around" >
+                                        <v-col cols="6" >범주명</v-col>
                                         <v-col cols="6">범주ID</v-col>
                                       </v-row>
                                   </v-list-item>
@@ -534,11 +535,10 @@
                       </v-list-item>
                       <v-divider></v-divider>
 
-                      <v-list-item style="background-color:#F9FBFD">
-                          <v-row align="center" justify="space-around">
+                      <v-list-item style="background-color:#fff;font-weight: bold">
+                          <v-row align="center" justify="space-around" >
                             <v-col cols="4">범주명</v-col>
-                            <v-col cols="4">범주ID</v-col>
-                            <v-col cols="4" align="right">삭제</v-col>
+                            <v-col cols="8">범주ID</v-col>
                           </v-row>
                       </v-list-item>
                       <v-divider></v-divider>
@@ -547,7 +547,7 @@
                         <div v-for="(item,index) in possibleList" :key="item.no">
                         <v-list-item>
                           <v-list-item-content>
-                            <v-row>
+                            <v-row >
                               <v-col cols="4">{{item.range}}</v-col>
                               <v-col cols="4">{{item.no}}</v-col>
                               <v-col cols="4" align="right">
@@ -582,7 +582,7 @@
                   </v-card>
                 </v-col>
                 <v-col style="padding-top:30px;">
-                  <v-card>
+                  <v-card style="background-color:#F9FBFD">
                     <v-list-item>
                       <v-list-item-content style="font-size:1.4rem; font-weight:bold">
                           <v-row align="center" justify="space-around" >
@@ -604,7 +604,7 @@
                               </v-dialog>   -->
                               <v-dialog v-model="dialog2"  max-width="800" >
                                 <template v-slot:activator="{ on, attrs }"><v-btn text  v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>추가</v-btn></template>
-                                <v-card style="overflow-x: hidden;min-height: 500px">
+                                <v-card style="overflow-x: hidden;min-height: 500px" >
                                   <v-list-item>
                                     <v-list-item-content style="font-size:1.4rem; ">
                                         <v-row align="center" justify="space-around" >
@@ -646,7 +646,7 @@
                                   </v-list-item>
                                    <v-divider></v-divider>
 
-                                  <v-list-item style="background-color:#F9FBFD">
+                                  <v-list-item style="font-weight:bold;background-color:#F9FBFD">
                                       <v-row align="center" justify="space-around">
                                         <v-col cols="12">그룹명</v-col>
                                       </v-row>
@@ -671,10 +671,9 @@
                     </v-list-item>
                     <v-divider></v-divider>
 
-                     <v-list-item style="background-color:#F9FBFD">
-                          <v-row align="center" justify="space-around">
-                            <v-col cols="8">그룹명</v-col>
-                            <v-col cols="4" align="right">삭제</v-col>
+                     <v-list-item >
+                          <v-row align="center" justify="space-around" style="background-color:#fff; font-weight:bold">
+                            <v-col cols="12">그룹명</v-col>
                           </v-row>
                       </v-list-item>
                       <v-divider></v-divider>
