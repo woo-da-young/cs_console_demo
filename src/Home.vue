@@ -306,6 +306,7 @@
             </v-col>
             <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title">읽기</div>
+              <!-- <div class="contents_comment">test</div> -->
               <v-switch
                 v-model="switch5"
                  inset 
@@ -387,7 +388,7 @@
                       <v-list-item>
                         <v-list-item-content style="font-size:1.4rem; font-weight:bold ">
                           <v-row align="center" justify="space-around">
-                            <v-col cols="8">암호화 가능 범주</v-col>
+                            <v-col cols="8" class="contents_title">암호화 가능 범주</v-col>
                             <v-col cols="4" align="right" justify="space-around">  
                               <v-dialog v-model="dialog"  max-width="800" >
                                 <template v-slot:activator="{ on, attrs }"><v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>edit</v-btn></template>
@@ -495,7 +496,7 @@
                     <v-list-item>
                       <v-list-item-content style="font-size:1.4rem; font-weight:bold">
                           <v-row align="center" justify="space-around" >
-                            <v-col cols="8">접근대상 지정 그룹</v-col>
+                            <v-col cols="8" class="contents_title">접근대상 지정 그룹</v-col>
                             <v-col cols="4" align="right" justify="space-around">
                               <!-- <v-dialog v-model="dialog2" persistent max-width="800">
                                 <template v-slot:activator="{ on, attrs }">
