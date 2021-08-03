@@ -110,7 +110,7 @@
 
         <!-- 메뉴 리스트 -->
         
-        <div style="display: table">
+        <div style="display: table; ">
           <v-card
             width="300px"
             style="background-color:#F9FBFD;display: table-cell"
@@ -160,11 +160,8 @@
 
         <!-- 메인 화면 -->
         <div style="width: calc(100vw - 300px); display: table-cell">
-          <v-row>
-            <v-col cols="12" style="margin-top:10px;">
-              <!-- <v-divider style="height:5px"></v-divider> -->
-              <v-row style="border-bottom: 1px solid #ccc;">
-                <v-col cols="1" style="padding: 0;">
+          <v-row style="border-bottom: 1px solid #ccc;">
+             <v-col cols="1" style="padding: 0;">
                   <v-btn text width="100%" style="display:block" v-if="disabledBtn" @click="snackbar = true;disabledBtn = false" ><v-icon left>mdi-pencil</v-icon>수정</v-btn>
                   <v-btn text width="100%" style="display:block" v-else disabled ><v-icon left>mdi-pencil</v-icon>수정</v-btn>
                   <v-snackbar v-model="snackbar" dark color="#333">저장되었습니다.
@@ -175,8 +172,6 @@
                   <v-btn text width="100%" style="display:block" v-if="disabledBtn" @click="disabledBtn = false;select=false;"><v-icon left>mdi-close</v-icon>취소</v-btn>
                   <v-btn text width="100%" style="display:block" v-else disabled><v-icon left>mdi-close</v-icon>취소</v-btn>
                 </v-col>
-              </v-row>
-            </v-col>
             
           </v-row>
           <!-- 1번째 줄 -->
@@ -391,32 +386,34 @@
                             <v-col cols="8" class="contents_title">암호화 가능 범주</v-col>
                             <v-col cols="4" align="right" justify="space-around">  
                               <v-dialog v-model="dialog"  max-width="800" >
-                                <template v-slot:activator="{ on, attrs }"><v-btn text v-bind="attrs" v-on="on" outlined><v-icon left>mdi-pencil</v-icon>추가</v-btn></template>
+                                <template v-slot:activator="{ on, attrs }"><v-btn text v-bind="attrs" v-on="on" ><v-icon left>mdi-pencil</v-icon>추가</v-btn></template>
                                 <v-card style="overflow-x: hidden;min-height: 500px">
                                   <v-list-item>
                                     <v-list-item-content style="font-size:1.4rem; ">
                                         <v-row align="center" justify="space-around" >
-                                          <v-col cols="8" >
-                                            <v-tooltip bottom>
-                                              <template v-slot:activator="{ on, attrs }">범주 선택<v-icon right color="gray" v-bind="attrs" v-on="on" style="padding-bottom:4px;">mdi-alert-circle-outline</v-icon></template>
-                                              <span> 보안문서 생성 시 선택 가능한 범주를 설정하십시오.<br> 아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다.</span>
-                                            </v-tooltip>
-                                          </v-col>
-                                          <v-col cols="4" align="right" justify="space-around">
-                                            <v-btn color="primary" @click="saveRange()" v-if="rangeSelectedItem || rangeSelectedItem === 0"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
-                                            <v-btn color="primary" disabled v-else><v-icon left>mdi-pencil</v-icon>Save</v-btn>
-                                            <v-snackbar v-model="snackbar" dark color="#333">
-                                              저장되었습니다.
-                                              <template v-slot:action="{ attrs }">
-                                              <v-btn color="blue" text v-bind="attrs" @click="snackbar=false;dialog=false;">닫기</v-btn>
-                                            </template>
-                                          </v-snackbar>
+                                          <v-col cols="12" class="contents_title">
+                                            <div class="contents_title" style="padding:5px">범주 선택 </div>
+                                              <div class="contents_comment" style="padding:5px">
+                                                <ul class="contents_comment-ul">
+                                                  <li>보안문서 생성 시 선택 가능한 범주를 설정하십시오.<br> 아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다.</li>
+                                                </ul>
+                                              </div>
                                           </v-col>
                                         </v-row>
                                     </v-list-item-content>
                                   </v-list-item>
                                   <v-divider></v-divider>
-                                  
+                                  <v-list-item>
+                                    <v-row >
+                                      <v-col cols="3" style="padding: 0;">
+                                        <v-btn text  @click="saveRange()" style="margin-right: 10px" v-if="rangeSelectedItem || rangeSelectedItem === 0"><v-icon left>mdi-pencil</v-icon>확인</v-btn>
+                                          <v-btn text  disabled style="margin-right: 10px" v-else><v-icon left>mdi-pencil</v-icon>확인</v-btn>
+                                           <v-btn text  @click="cancleRange()" v-if="rangeSelectedItem || rangeSelectedItem === 0"><v-icon left>mdi-close</v-icon>취소</v-btn>
+                                          <v-btn text  disabled v-else><v-icon left>mdi-close</v-icon>취소</v-btn>
+                                      </v-col>
+                                    </v-row>
+                                  </v-list-item>
+                                   <v-divider></v-divider>
                                   <v-list-item style="background-color:#F9FBFD">
                                       <v-row align="center" justify="space-around">
                                         <v-col cols="6">범주명</v-col>
@@ -513,29 +510,33 @@
                                 </v-card>
                               </v-dialog>   -->
                               <v-dialog v-model="dialog2"  max-width="800" >
-                                <template v-slot:activator="{ on, attrs }"><v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>edit</v-btn></template>
+                                <template v-slot:activator="{ on, attrs }"><v-btn text  v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>추가</v-btn></template>
                                 <v-card style="overflow-x: hidden;min-height: 500px">
                                   <v-list-item>
                                     <v-list-item-content style="font-size:1.4rem; ">
                                         <v-row align="center" justify="space-around" >
-                                          <v-col cols="8" >
-                                            <v-tooltip bottom>
-                                              <template v-slot:activator="{ on, attrs }">그룹 선택<v-icon right color="#47B8F5" v-bind="attrs" v-on="on" style="padding-bottom:4px;">mdi-alert-circle-outline</v-icon></template>
-                                              <span> 해당 사용자 및 그룹이 보안문서 생성 시 접근 권한을 지정할 수 있는 그룹을 조직도에서 선택하십시오.</span>
-                                            </v-tooltip>
-                                          </v-col>
-                                          <v-col cols="4" align="right" justify="space-around">
-                                            <v-btn color="primary" @click="saveGroup()" v-if="groupSelectedItem || groupSelectedItem === 0"><v-icon left>mdi-pencil</v-icon>Save</v-btn>
-                                            <v-btn color="primary" disabled v-else><v-icon left>mdi-pencil</v-icon>Save</v-btn>
-                                            <v-snackbar v-model="snackbar" dark color="#333">
-                                              저장되었습니다.
-                                              <template v-slot:action="{ attrs }">
-                                              <v-btn color="blue" text v-bind="attrs" @click="snackbar=false;dialog=false;">닫기</v-btn>
-                                            </template>
-                                          </v-snackbar>
+                                           <v-col cols="12" class="contents_title">
+                                            <div class="contents_title" style="padding:5px">그룹 선택 </div>
+                                              <div class="contents_comment" style="padding:5px">
+                                                <ul class="contents_comment-ul">
+                                                  <li>해당 사용자 및 그룹이 보안문서 생성 시 접근 권한을 지정할 수 있는 그룹을 조직도에서 선택하십시오.</li>
+                                                </ul>
+                                              </div>
                                           </v-col>
                                         </v-row>
                                     </v-list-item-content>
+                                  </v-list-item>
+                                  <v-divider></v-divider>
+
+                                  <v-list-item>
+                                    <v-row>
+                                      <v-col cols="3" style="padding: 0;" justify="space-around">
+                                        <v-btn text  @click="saveGroup()" style="margin-right: 10px"  v-if="groupSelectedItem || groupSelectedItem === 0"><v-icon left>mdi-pencil</v-icon>확인</v-btn>
+                                        <v-btn text  style="margin-right: 10px"  disabled v-else><v-icon left>mdi-pencil</v-icon>확인</v-btn>
+                                        <v-btn text  @click="cancleGroup()" v-if="groupSelectedItem || groupSelectedItem === 0"><v-icon left>mdi-close</v-icon>취소</v-btn>
+                                        <v-btn text  disabled v-else><v-icon left>mdi-close</v-icon>취소</v-btn>
+                                      </v-col>
+                                    </v-row>
                                   </v-list-item>
                                   <v-divider></v-divider>
                                   
@@ -545,7 +546,7 @@
                                         <v-text-field prepend-inner-icon="mdi-magnify" dense style="padding-top : 10px" v-model="searchTxt"></v-text-field>
                                       </v-col>
                                       <v-col cols="3">
-                                        <v-btn color="success" ><v-icon left>mdi-magnify</v-icon>search</v-btn>
+                                        <v-btn text ><v-icon left>mdi-magnify</v-icon>검색</v-btn>
                                       </v-col>
                                     </v-row>
                                         
@@ -644,11 +645,11 @@
         ],
         items: [
           {
-            action: 'mdi-ticket',
+            action: 'mdi-account',
             title: '기본 정보',
           },
           {
-            action: 'mdi-run',
+            action: 'mdi-application',
             items: [
               { title: '로그인' },
               { title: '패스워드' },
@@ -661,7 +662,7 @@
             title: '프로파일',
           },
            {
-            action: 'mdi-school',
+            action: 'mdi-book',
             items: [
               { title: '기본암호화 정책' },
               { title: '강제암호화 정책' },
@@ -673,11 +674,11 @@
             title: '애드인 정책',
           },
           {
-            action: 'mdi-tag',
+            action: 'mdi-shield-account',
             title: 'Custom 정책',
           },
           {
-            action: 'mdi-silverware-fork-knife',          
+            action: 'mdi-account-star',          
             items: [
               { title: '등급권한'},
               { title: '개인/그룹 권한' },
@@ -686,15 +687,15 @@
             title: '강제권한',
           },
           {
-            action: 'mdi-content-cut',
+            action: 'mdi-source-branch',
             title: '하위관리자',
           },
           {
-            action: 'mdi-tag',
+            action: 'mdi-monitor-lock',
             title: 'PC 보안',
           },
           {
-            action: 'mdi-tag',
+            action: 'mdi-card-bulleted-outline',
             title: 'CSLinker 라이선스',
           },
         ],
@@ -810,19 +811,27 @@
         this.dialog = false;
       },
       saveRange() {
-        this.snackbar = true;
+        // this.snackbar = true;
         this.dialog=false;
         this.possibleList.push(this.rangeList[this.rangeSelectedItem]);
         this.rangeList.splice(this.rangeSelectedItem, 1);
         this.rangeSelectedItem=false;
       },
+      cancleRange (){
+        this.dialog=false;
+        this.rangeSelectedItem=false;
+      },
       saveGroup(){
-        this.snackbar = true;
+        //this.snackbar = true;
         this.dialog2=false;
         this.accessList.push(this.searchList[this.groupSelectedItem]);
         this.searchList.splice(this.groupSelectedItem, 1);
         this.groupSelectedItem=false;
-      }
+      },
+      cancleGroup (){
+        this.dialog2=false;
+        this.groupSelectedItem=false;
+      },
     }
   }
 </script>
