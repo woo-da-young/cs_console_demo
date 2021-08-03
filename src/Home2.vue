@@ -545,7 +545,7 @@ import LeftNav from '../src/components/LeftNav.vue'
       },
       saveGroup(){
         this.snackbar = true;
-        this.dialog=false;
+        this.dialog2=false;
         this.accessList.push(this.searchList[this.groupSelectedItem]);
         this.searchList.splice(this.groupSelectedItem, 1);
         this.groupSelectedItem=false;
