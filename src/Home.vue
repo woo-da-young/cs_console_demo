@@ -391,7 +391,7 @@
                             <v-col cols="8" class="contents_title">암호화 가능 범주</v-col>
                             <v-col cols="4" align="right" justify="space-around">  
                               <v-dialog v-model="dialog"  max-width="800" >
-                                <template v-slot:activator="{ on, attrs }"><v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>edit</v-btn></template>
+                                <template v-slot:activator="{ on, attrs }"><v-btn text v-bind="attrs" v-on="on" outlined><v-icon left>mdi-pencil</v-icon>추가</v-btn></template>
                                 <v-card style="overflow-x: hidden;min-height: 500px">
                                   <v-list-item>
                                     <v-list-item-content style="font-size:1.4rem; ">
@@ -643,39 +643,47 @@
           {icon: 'mdi-cog-outline', title: '환경 설정'}
         ],
         items: [
-        {
-          action: 'mdi-ticket',
-          title: '기본 정보',
-        },
-        {
-          action: 'mdi-silverware-fork-knife',          
-          items: [
-            { title: '등급권한'},
-            { title: '개인/그룹 권한' },
-            { title: '범주 권한' },
-          ],
-          title: '강제권한',
-        },
-        {
-          action: 'mdi-school',
-          items: [
-            { title: '기본암호화 정책' },
-            { title: '강제암호화 정책' },
-          ],
-          title: '암호화 정책',
-        },
-        {
-          action: 'mdi-run',
-          items: [
-            { title: '로그인' },
-            { title: '패스워드' },
-            { title: '업그레이드' },
-            { title: 'APP제어' },
-            { title: '프린트마킹' },
-            { title: '외부전송' },
-            { title: '기타' },
-          ],
-          title: '프로파일',
+          {
+            action: 'mdi-ticket',
+            title: '기본 정보',
+          },
+          {
+            action: 'mdi-run',
+            items: [
+              { title: '로그인' },
+              { title: '패스워드' },
+              { title: '업그레이드' },
+              { title: 'APP제어' },
+              { title: '프린트마킹' },
+              { title: '외부전송' },
+              { title: '기타' },
+            ],
+            title: '프로파일',
+          },
+           {
+            action: 'mdi-school',
+            items: [
+              { title: '기본암호화 정책' },
+              { title: '강제암호화 정책' },
+            ],
+            title: '암호화 정책',
+          },
+          {
+            action: 'mdi-tag',
+            title: '애드인 정책',
+          },
+          {
+            action: 'mdi-tag',
+            title: 'Custom 정책',
+          },
+          {
+            action: 'mdi-silverware-fork-knife',          
+            items: [
+              { title: '등급권한'},
+              { title: '개인/그룹 권한' },
+              { title: '범주 권한' },
+            ],
+            title: '강제권한',
           },
           {
             action: 'mdi-content-cut',
@@ -688,14 +696,6 @@
           {
             action: 'mdi-tag',
             title: 'CSLinker 라이선스',
-          },
-          {
-            action: 'mdi-tag',
-            title: '애드인 정책',
-          },
-          {
-            action: 'mdi-tag',
-            title: 'Custom 정책',
           },
         ],
         group:'',
