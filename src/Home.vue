@@ -94,13 +94,13 @@
     <v-main>
       <!-- 사이트맵?? -->
       <v-container fluid >
-        <div style="color:#0575F3;font-size:14px;padding-bottom:10px;">홈 <span class="nav-divider">></span> user1 <span class="nav-divider">></span>  암호화 정책</div>
+        <div style="color:#0575F3;font-size:14px;padding-bottom:10px;">홈 <span class="nav-divider">></span> 모든 사용자 <span class="nav-divider">></span> myeongseok.seo <span class="nav-divider">></span>  암호화 정책</div>
 
         <div class="softcamp-blade-title-content">
           <span class="softcamp-blade-header-icon"><v-icon x-large>mdi-account</v-icon></span>                
           <div class="softcamp-blade-title">
             <div class="softcamp-blade-title-toprow">
-              <h2 class="softcamp-blade-title-titleText">USER1 <span class="softcamp-font-regular"> | 기본암호화 정책</span></h2>
+              <h2 class="softcamp-blade-title-titleText">myeongseok.seo <span class="softcamp-font-regular"> | 기본암호화 정책</span></h2>
             </div>
           </div>
         </div>
@@ -253,10 +253,10 @@
           <v-row class="contents_layout">
             <!-- 3 -->
             <v-col cols="6" >
-              <div class="contents_title">MAC 문서 오픈시 생성자 권한 무시</div>
+              <div class="contents_title">범주 문서 열람시 생성자 권한 무시</div>
               <div class="contents_comment">
                 <ul class="contents_comment-ul">
-                  <li>사용하면 MAC 문서(범주 보안문서) 오픈 시 생성자 권한을 무시하고, 범주 정책의 권한을 따릅니다.</li>
+                  <li>사용하면 범주 문서(범주 보안문서) 열람시 생성자 권한을 무시하고, 범주 정책의 권한을 따릅니다.</li>
                 </ul>
               </div>
               <v-switch
@@ -270,10 +270,10 @@
               </v-switch>  
             </v-col>
             <v-col  cols="6" >
-              <div class="contents_title">DAC 문서 오픈시 생성자 권한 적용 </div>
+              <div class="contents_title">개인/그룹 문서 열람시 생성자 권한 적용 </div>
               <div class="contents_comment">
                 <ul class="contents_comment-ul">
-                  <li>사용하면 DAC 문서 오픈 시 생성자 권한을 적용합니다</li>
+                  <li>사용하면 개인/그룹 문서 오픈 시 생성자 권한을 적용합니다</li>
                   <li>보안문서 생성 시 생성자 권한과 현재 생성자 권한 중 로그인 생성자 권한으로 생성자 권한 적용 여부</li>
                   <li>예: 작년에 생성자 권한에 해제 권한이 없고 현재는 해재 권한이 있을 경우 현재의 권한으로 해제 하려면 체크</li>
                 </ul>
@@ -565,12 +565,12 @@
         selectedItem: 1,
         navs: [
           {icon: 'mdi-home', title: '홈'},
-          {icon: 'mdi-hammer-wrench', title: '조직관리'},
-          {icon: 'mdi-folder', title: '정책관리'},
+          {icon: 'mdi-hammer-wrench', title: '조직 관리'},
+          {icon: 'mdi-folder', title: '정책 관리'},
           // {icon: 'mdi-shield-check', title: '보안감사'},
-          {icon: 'mdi-hammer-wrench', title: '관리도구'},
+          {icon: 'mdi-hammer-wrench', title: '관리 도구'},
           // {icon: 'mdi-clipboard-account', title: '관리자정책'},
-          {icon: 'mdi-cog-outline', title: '환경설정'}
+          {icon: 'mdi-cog-outline', title: '환경 설정'}
         ],
         items: [
         {
@@ -581,8 +581,8 @@
           action: 'mdi-silverware-fork-knife',          
           items: [
             { title: '등급권한'},
-            { title: 'DAC 권한' },
-            { title: 'MAC 권한' },
+            { title: '개인/그룹 권한' },
+            { title: '범주 권한' },
           ],
           title: '강제권한',
         },
@@ -679,7 +679,7 @@
 </script>
 <style>
 .softcamp-font-regular {
-    font-family: az_ea_font,'Segoe UI',az_font,system-ui,-apple-system,BlinkMacSystemFont,Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+    font-family: az_ea_font,'Segoe UI',az_font,system-ui,-apple-system,Blink범주SystemFont,Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
     font-weight: 400;
 }
 .app-main {
