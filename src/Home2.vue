@@ -177,17 +177,17 @@
                                   
                                   <v-list-item style="background-color:#F9FBFD">
                                       <v-row align="center" justify="space-around">
-                                        <v-col cols="6">범주ID</v-col>
                                         <v-col cols="6">범주명</v-col>
+                                        <v-col cols="6">범주ID</v-col>
                                       </v-row>
                                   </v-list-item>
                                   <v-divider></v-divider>
                                   <v-list-item-group v-model="rangeSelectedItem">
                                   <div v-for="item in rangeList" :key="item.no">
                                     <v-list-item>
-                                        <v-row align="center">                                          
+                                        <v-row align="center">               
+                                          <v-col cols="6">{{item.range}}</v-col>                           
                                           <v-col cols="6">{{item.no}}</v-col>
-                                          <v-col cols="6">{{item.range}}</v-col>
                                         </v-row>
                                     </v-list-item>
                                     <v-divider></v-divider> 
@@ -202,13 +202,22 @@
                       </v-list-item>
                       <v-divider></v-divider>
 
+                      <v-list-item style="background-color:#F9FBFD">
+                          <v-row align="center" justify="space-around">
+                            <v-col cols="4">범주명</v-col>
+                            <v-col cols="4">범주ID</v-col>
+                            <v-col cols="4" align="right">삭제</v-col>
+                          </v-row>
+                      </v-list-item>
+                      <v-divider></v-divider>
+
                       <template v-if="possibleList.length > 0">
                         <div v-for="(item,index) in possibleList" :key="item.no">
                         <v-list-item>
                           <v-list-item-content>
                             <v-row>
-                              <v-col cols="4">{{item.no}}</v-col>
                               <v-col cols="4">{{item.range}}</v-col>
+                              <v-col cols="4">{{item.no}}</v-col>
                               <v-col cols="4" align="right">
                                 <v-dialog v-model="item.dialog" persistent max-width="500">
                                   <template v-slot:activator="{ on, attrs }">
@@ -325,6 +334,14 @@
                       </v-list-item-content>
                     </v-list-item>
                     <v-divider></v-divider>
+
+                     <v-list-item style="background-color:#F9FBFD">
+                          <v-row align="center" justify="space-around">
+                            <v-col cols="8">그룹명</v-col>
+                            <v-col cols="4" align="right">삭제</v-col>
+                          </v-row>
+                      </v-list-item>
+                      <v-divider></v-divider>
 
                     <div v-for="(item,index) in accessList" :key="item.range">
                       <v-list-item>
