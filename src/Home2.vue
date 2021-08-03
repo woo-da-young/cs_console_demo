@@ -9,7 +9,7 @@
         <v-divider></v-divider>
           
         <v-row style="padding-top: 10px;">
-          <v-col>
+          <v-col  cols="2">
              <v-list color="#F9FBFD" rounded nav>
               <v-list-item-group color="primary" v-model="selectedItem" mandatory >
                 <div v-for="(item, i) in items" :key="i">
