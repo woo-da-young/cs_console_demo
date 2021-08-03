@@ -30,6 +30,27 @@
       style="padding-top:25px;"
     ></v-text-field>
      
+     <v-btn class="white--text " text >
+       <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          src="https://zero-dev.security365.com/img/logo_SHIELD@Home_Zero.72182f75.svg"
+          contain
+          style="padding:0"
+          width="150px"
+        />
+      </v-btn> 
+
+      <v-btn class="white--text " text >
+       <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          src="https://10.11.10.30:9000/img/img_gatex.d3da0262.png"
+          width="130px"
+        />
+      </v-btn> 
+
     <v-menu
       transition="slide-y-transition"
       bottom
@@ -39,7 +60,7 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          class="white--text ma-5"
+          class="white--text "
           v-bind="attrs"
           v-on="on"
           text

@@ -25,12 +25,28 @@
         dense
         background-color="#B3D6F2"
       ></v-text-field>
-      <!-- <v-btn
-        text
-        color="#ccc"
-      >
-        <v-icon size="35">mdi-account</v-icon>
-      </v-btn>  -->
+
+      <v-btn class="white--text " text >
+       <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          src="https://zero-dev.security365.com/img/logo_SHIELD@Home_Zero.72182f75.svg"
+          contain
+          style="padding:0"
+          width="150px"
+        />
+      </v-btn> 
+
+      <v-btn class="white--text " text >
+       <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          src="https://10.11.10.30:9000/img/img_gatex.d3da0262.png"
+          width="130px"
+        />
+      </v-btn> 
+
       <v-menu
         transition="slide-y-transition"
         bottom
@@ -61,12 +77,6 @@
           </v-list-item>
            <v-list-item><div style="width: 100%"><v-btn style="background-color:#eee;" text width="100%">로그아웃</v-btn></div> </v-list-item>
         </v-card>
-      <!-- <v-list dense color="#fff">
-        <v-list-item v-for="(item, i) in myItems" :key="i" style="width: 200px; back;background-color: #fff" color="#fff">
-          <v-list-item-icon><v-icon>{{item.icon}}</v-icon></v-list-item-icon>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item>
-      </v-list> -->
     </v-menu>
     </v-app-bar>
 
@@ -77,7 +87,7 @@
       bottom
       temporary
     >
-      <v-list nav >
+      <!-- <v-list nav >
         <v-list-item-group mandatory color="primary">
           <v-list-item link v-for="item in navs" :key="item.title" >
             <v-list-item-icon>
@@ -86,7 +96,45 @@
             <v-list-item-title >{{item.title}}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
-      </v-list>
+      </v-list> -->
+      <v-row>
+      <v-col>
+        <v-list rounded nav>
+          <v-list-item-group color="primary" v-model="selectedItem" mandatory >
+            <div v-for="(item, i) in items2" :key="i">
+              <v-list-group v-if="item.items && item.items.length > 0"
+                no-action
+                mandatory
+                :prepend-icon="item.action"
+              >
+                <template v-slot:activator >
+                  <v-list-item-content>
+                    <v-list-item-title v-text="item.title" ></v-list-item-title>
+                  </v-list-item-content>
+                </template>
+                <v-list-item
+                  v-for="child in item.items"
+                  :key="child.title"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title v-text="child.title"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-group>
+
+              <v-list-item v-else >
+                <v-list-item-icon>
+                  <v-icon v-text="item.action"></v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.title"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </div>
+          </v-list-item-group>
+        </v-list>
+      </v-col>
+    </v-row>
     </v-navigation-drawer>
 
 
@@ -436,13 +484,14 @@
                                 <template v-slot:activator="{ on, attrs }"><v-btn text v-bind="attrs" v-on="on" ><v-icon left>mdi-pencil</v-icon>추가</v-btn></template>
                                 <v-card style="overflow-x: hidden;min-height: 500px">
                                   <v-list-item>
-                                    <v-list-item-content style="font-size:1.4rem; ">
+                                    <v-list-item-content >
                                         <v-row align="center" justify="space-around" >
                                           <v-col cols="12" class="contents_title">
                                             <div class="contents_title" style="padding:5px">범주 선택 </div>
                                               <div class="contents_comment" style="padding:5px">
                                                 <ul class="contents_comment-ul">
-                                                  <li>보안문서 생성 시 선택 가능한 범주를 설정하십시오.<br> 아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다.</li>
+                                                  <li>보안문서 생성 시 선택 가능한 범주를 설정하십시오.</li>
+                                                  <li>아무 것도 설정하지 않으면 암호화 시 모든 범주를 선택할 수 있습니다.</li>
                                                 </ul>
                                               </div>
                                           </v-col>
@@ -590,7 +639,7 @@
                                   <v-list-item>
                                     <v-row align="center">
                                       <v-col cols="6" offset="2">
-                                        <v-text-field prepend-inner-icon="mdi-magnify" dense style="padding-top : 10px" v-model="searchTxt"></v-text-field>
+                                        <v-text-field prepend-inner-icon="mdi-magnify" dense style="padding-top : 10px" v-model="searchTxt" ></v-text-field>
                                       </v-col>
                                       <v-col cols="3">
                                         <v-btn text ><v-icon left>mdi-magnify</v-icon>검색</v-btn>
@@ -744,6 +793,45 @@
           {
             action: 'mdi-card-bulleted-outline',
             title: 'CSLinker 라이선스',
+          },
+        ],
+        items2: [
+          {
+            action: 'mdi-account-group',
+            title: '조직관리',
+            items: [
+              { title: '모든 사용자' },
+              { title: '모든 그룹' },
+            ],
+          },
+          {
+            action: 'mdi-book-open-page-variant',
+            title: '정책 관리',
+            items: [
+              { title: '로그 정책' },
+              { title: '보안 정책' },
+            ],
+          },
+           {
+            action: 'mdi-tools',
+            title: '관리 도구',
+            items: [
+              { title: '추적 및 해독' },
+              { title: '로그 관리' },
+              { title: '마킹이미지 관리' },
+              { title: '직위 관리' },
+              { title: '연동시스템 관리' },
+              { title: '라이센스 관리' },
+              { title: '애드인 관리' },
+              { title: '커스텀정책 관리' },
+            ],
+          },
+          {
+            action: 'mdi-cog',
+            title: '환경설정',
+            items: [
+              { title: '서버 프로파일' },
+            ]
           },
         ],
         group:'',

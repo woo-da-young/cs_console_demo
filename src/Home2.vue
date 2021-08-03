@@ -10,18 +10,13 @@
           
         <v-row style="padding-top: 10px;">
           <v-col>
-            <!--<v-list rounded color="#F9FBFD">
-              <v-list-item-group v-model="selectedItem" color="primary" mandatory>
-                <v-list-item v-for="(item, i) in items" :key="i">
-                  <v-list-item-content><v-list-item-title v-text="item.text" ></v-list-item-title></v-list-item-content>
-                </v-list-item>
-              </v-list-item-group>
-            </v-list>-->
-             <v-list color="#F9FBFD" rounded>
+             <v-list color="#F9FBFD" rounded nav>
               <v-list-item-group color="primary" v-model="selectedItem" mandatory >
                 <div v-for="(item, i) in items" :key="i">
                   <v-list-group v-if="item.items && item.items.length > 0"
                     no-action
+                    mandatory
+                    :prepend-icon="item.action"
                     style="background-color:#F9FBFD;"
                   >
                     <template v-slot:activator >
@@ -33,7 +28,6 @@
                       style="background-color:#F9FBFD;"
                       v-for="child in item.items"
                       :key="child.title"
-                      v-model="child.active"
                     >
                       <v-list-item-content>
                         <v-list-item-title v-text="child.title"></v-list-item-title>
@@ -42,6 +36,9 @@
                   </v-list-group>
 
                   <v-list-item v-else >
+                    <v-list-item-icon>
+                      <v-icon v-text="item.action"></v-icon>
+                    </v-list-item-icon>
                     <v-list-item-content>
                       <v-list-item-title v-text="item.title"></v-list-item-title>
                     </v-list-item-content>
@@ -121,7 +118,7 @@
                               <template v-slot:activator="{ on, attrs }">
                                 <span v-bind="attrs" v-on="on" align="center" style="margin:0 auto"><v-icon color="#47B8F5" algin="center" right style="padding-bottom:2px;">mdi-alert-circle-outline</v-icon></span>
                               </template>
-                              <span>암호 문서 생성시 기본적으로 적용될 권한을 설정합니다.</span>
+                              <span>문서 생성자의 보안문서 사용 권한을 설정합니다. 읽기, 편집, 해제, 반출, 출력, 마킹, 권한변경 등의 권한을 설정할 수 있습니다.<br>참고: 일반 문서의 경우, 반출 권한과 상관없이 외부 전송용 보안 파일을 생성할 수 있습니다.</span>
                             </v-tooltip>
                           </v-list-item-title>
                         </v-col>
@@ -129,8 +126,19 @@
                           <v-row align="center">
                             <v-col cols="6" v-for="item in authList" :key="item.text"> 
                               <v-switch v-model="item.switch" inset  hide-details style="padding:0px 10px; margin-top: 8px;">
-                                <template v-slot:label v-if="item.switch === true"><span style="color: #1976d2;padding-right: 5px;">{{item.text}}</span><span style="color: #000"> 사용</span></template>
-                                <template v-slot:label v-else><span style="color: #1976d2;padding-right: 5px;">{{item.text}}</span><span> 미사용</span></template>
+                                <template v-slot:label v-if="item.switch === true">
+                                    <span style="color: #1976d2;padding-right: 5px;">{{item.text}}</span><span style="color: #000"> 사용</span>
+                                    <v-tooltip bottom>
+                                    <template v-slot:activator="{ on, attrs }"><v-icon right color="#47B8F5" v-bind="attrs" v-on="on" style="padding-bottom:3px;" small>mdi-alert-circle-outline</v-icon></template>
+                                    <span> {{item.tooltip}}</span>
+                                  </v-tooltip>
+                                </template>
+                                <template v-slot:label v-else><span style="color: #1976d2;padding-right: 5px;">{{item.text}}</span><span> 미사용</span>
+                                  <v-tooltip bottom>
+                                    <template v-slot:activator="{ on, attrs }"><v-icon right color="#47B8F5" v-bind="attrs" v-on="on" style="padding-bottom:3px;" small>mdi-alert-circle-outline</v-icon></template>
+                                    <span> {{item.tooltip}}</span>
+                                  </v-tooltip>
+                                </template>
                               </v-switch>
                             </v-col>
                           </v-row>
@@ -395,67 +403,68 @@ import LeftNav from '../src/components/LeftNav.vue'
           {icon: 'mdi-clipboard-account', title: '관리자정책'},
           {icon: 'mdi-cog-outline', title: '환경설정'}
         ],
-        items: [
-        {
-          action: 'mdi-ticket',
-          title: '기본정보',
-        },
-        {
-          action: 'mdi-silverware-fork-knife',          
-          items: [
-            { title: '등급권한'},
-            { title: 'DAC 권한' },
-            { title: 'MAC 권한' },
-          ],
-          title: '강제권한',
-        },
-        {
-          action: 'mdi-school',
-          items: [
-            { title: '기본암호화 정책' },
-            { title: '강제암호화 정책' },
-          ],
-          title: '암호화 정책',
-        },
-        {
-          action: 'mdi-run',
-          items: [
-            { title: '로그인' },
-            { title: '패스워드' },
-            { title: '업그레이드' },
-            { title: 'APP제어' },
-            { title: '프린트마킹' },
-            { title: '외부전송' },
-            { title: '기타' },
-          ],
-          title: '프로파일',
+         items: [
+          {
+            action: 'mdi-account',
+            title: '기본 정보',
           },
           {
-            action: 'mdi-content-cut',
-            title: '하위관리자',
+            action: 'mdi-application',
+            items: [
+              { title: '로그인' },
+              { title: '패스워드' },
+              { title: '업그레이드' },
+              { title: 'APP제어' },
+              { title: '프린트마킹' },
+              { title: '외부전송' },
+              { title: '기타' },
+            ],
+            title: '프로파일',
           },
-          {
-            action: 'mdi-tag',
-            title: 'PC 보안',
-          },
-          {
-            action: 'mdi-tag',
-            title: '라이선스 정책',
+           {
+            action: 'mdi-book',
+            items: [
+              { title: '기본암호화 정책' },
+              { title: '강제암호화 정책' },
+            ],
+            title: '암호화 정책',
+            subListOn: 1,
           },
           {
             action: 'mdi-tag',
             title: '애드인 정책',
           },
           {
-            action: 'mdi-tag',
+            action: 'mdi-shield-account',
             title: 'Custom 정책',
+          },
+          {
+            action: 'mdi-account-star',          
+            items: [
+              { title: '등급권한'},
+              { title: '개인/그룹 권한' },
+              { title: '범주 권한' },
+            ],
+            title: '강제권한',
+          },
+          {
+            action: 'mdi-source-branch',
+            title: '하위관리자',
+          },
+          {
+            action: 'mdi-monitor-lock',
+            title: 'PC 보안',
+          },
+          {
+            action: 'mdi-card-bulleted-outline',
+            title: 'CSLinker 라이선스',
           },
         ],
         reveal: false,
         basicCryptoItem: [
           {
             title: '암호화 시점', 
-            tooltip: '문서가 암호화되는 시점을 설정합니다.<br>문서 편집기의 종료시점을 지원하며 MS 오피스의 경우 저장 시점도 지원합니다.', 
+            tooltip: '보안문서 생성시 암호화 시점을 설정 할 수 있습니다.<br>문서편집기 저장 시 암호화는 MS Office 계열의 어플리케이션 (예: MS Word, MS PowerPoint, MS Excel)만 지원합니다.<br>여타 어플리케이션은 문서 저장 시에 암호화 여부를 묻는 지 않고, 문서편집기 종료 시에만 암호화 여부를 묻습니다.', 
             selectList: [
             {
               text: '문서편집기 저장시(MS 오피스만 지원)',
@@ -467,22 +476,22 @@ import LeftNav from '../src/components/LeftNav.vue'
             }
           ],
         },
-          {title: '작업 종료시 창 표시안함 체크박스', tooltip: '해당 기능을 사용 할 겨우 암호화 문서는 단순 암호화됩니다.', selectList: ['활성화', '비활성화', '감춤', '비활성화(체크)', '비활성화(언체크)', '감춤(체크)', '감춤(언체크)']},
+          {title: '작업 종료시 창 표시안함 체크박스', tooltip: '작업 종료시 암호화를 진행할 지를 묻는 창의 하단의 \'다음부터 이 창을 표시하지 않음\' 문구 체크 및 활성화 여부를 선택합니다.', selectList: ['활성화', '비활성화', '감춤', '비활성화(체크)', '비활성화(언체크)', '감춤(체크)', '감춤(언체크)']},
         ],
         authList: [
-          { text: '반출', switch: false },
-          { text: '해제', switch: false },
-          { text: '편집', switch: false },
-          { text: '읽기', switch: false },
-          { text: '마킹', switch: false },
-          { text: '출력', switch: false },
-          { text: '권한변경', switch: false },
+          { text: '읽기', switch: false, tooltip:'문서를 수정할 수 없고 읽을 수만 있는 권한입니다.' },
+          { text: '편집', switch: false, tooltip:'문서를 수정할 수 있는 권한 입니다.' },
+          { text: '해제', switch: false, tooltip:'암호화된 문서를 평문으로 복호화 할 수 있는 권한 입니다.' },
+          { text: '반출', switch: false, tooltip:'문서를 반출 할수 있는 권한 입니다.' },
+          { text: '출력', switch: false, tooltip:'문서의 출력 가능 여부를 제어하는 권한 입니다. 미사용시 출력이 제한됩니다.' },
+          { text: '마킹', switch: false, tooltip:'문서 출력시 프린트 마킹기능의 사용 유무를 결정합니다.' },
+          { text: '권한변경', switch: false, tooltip:'지정된 생성자 권한을 변경할 수 있는 권한 입니다.' },
         ],
         policyList: [
-          {title: '단순 암호화 사용', tooltip: '해당 기능을 사용할 경우 암호화 문서는 단순 암호화 됩니다.', switch: false},
-          {title: '폴더내 파일 암호화', tooltip: '폴더가 암호화되는 시점을 설정합니다.<br />문서 편집기의 종료시점을 지원하며 MS 오피스의 경우 저장 시점도 지원합니다.', switch: false},
-          {title: 'MAC 문서 오픈시 생성자 권한 무시', tooltip: '이 기능을 사용할 경우 MAC문서일 경우 생성자 권한은 무시됩니다.<br />MAC 문서의 권한이 적용됩니다.', switch: false},
-          {title: 'DAC 문서 오픈시 생성자 권한 적용', tooltip: '이 기능을 사용할 경우 DAC문서일 경우 생성자 권한은 무시됩니다.<br />DAC 문서의 권한이 적용됩니다.', switch: false}
+          {title: '단순 암호화 사용', tooltip: '문서보안에서 지원하지 않는 확장자를 암호화 합니다.<br>DSD 확장자로 암호화 되며, 접근대상자에 포함된 사용자가 해당 파일 열람 시 복호화 됩니다.', switch: false},
+          {title: '폴더내 파일 암호화', tooltip: '폴더 내의 파일을 일괄적으로 암호화하는 기능의 사용 여부를 설정합니다.', switch: false},
+          {title: '범주 문서 열람시 생성자 권한 무시', tooltip: '사용하면 범주 문서(범주 보안문서) 열람시 생성자 권한을 무시하고, 범주 정책의 권한을 따릅니다.', switch: false},
+          {title: '개인/그룹 문서 열람시 생성자 권한 적용', tooltip: '사용하면 개인/그룹 문서 오픈 시 생성자 권한을 적용합니다<br />보안문서 생성 시 생성자 권한과 현재 생성자 권한 중 로그인 생성자 권한으로 생성자 권한 적용 여부<br />예: 작년에 생성자 권한에 해제 권한이 없고 현재는 해재 권한이 있을 경우 현재의 권한으로 해제 하려면 체크', switch: false}
         ],
         possibleList: [
           {no:'0000001', range:'임직원', dialog:false },
@@ -508,7 +517,6 @@ import LeftNav from '../src/components/LeftNav.vue'
         checkbox: [],
         singleSelect: false,
         rangeSelectedItem:false,
-        subListOn: 1,
         listOn: 3,
         disabledBtn: null,
         select: null,
