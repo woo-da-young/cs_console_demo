@@ -438,12 +438,12 @@
                 </ul>
               </div>
               <v-switch
-                v-model="switch9"
+                v-model="switch11"
                  inset 
                 hide-details                
                 class="v-switch-style"
               >
-                <template v-slot:label v-if="switch9 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-if="switch11 === true"><span style="color: #000">사용</span></template>
                 <template v-slot:label v-else><span>미사용</span></template>
               </v-switch>
             </v-col>
@@ -852,6 +852,7 @@
         switch8:false,
         switch9:false,
         switch10:false,
+        switch11:false,
         possibleList: [
           {no:'0000001', range:'임직원', dialog:false },
         ],  
