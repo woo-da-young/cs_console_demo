@@ -306,7 +306,12 @@
             </v-col>
             <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title">읽기</div>
-              <!-- <div class="contents_comment">test</div> -->
+              <div class="contents_comment  contents_sub">
+                <ul class="contents_comment-ul">
+                  <li>문서를 수정할 수 없고 읽을 수만 있는 권한 입니다.</li>
+                  <li></li>
+                </ul>
+              </div>
               <v-switch
                 v-model="switch5"
                  inset 
@@ -319,6 +324,11 @@
             </v-col>
             <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title">편집</div>
+              <div class="contents_comment  contents_sub">
+                <ul class="contents_comment-ul">
+                  <li>문서를 수정할 수 있는 권한 입니다.</li>
+                </ul>
+              </div>
               <v-switch
                 v-model="switch6"
                  inset 
@@ -331,6 +341,11 @@
             </v-col>
             <v-col cols="6" style="margin:0; padding:2px" >
               <div class="contents_sub-title">해제</div>
+              <div class="contents_comment  contents_sub">
+                <ul class="contents_comment-ul">
+                  <li>암호화된 문서를 평문으로 복호화 할 수 있는 권한 입니다.</li>
+                </ul>
+              </div>
               <v-switch
                 v-model="switch7"
                  inset 
@@ -343,6 +358,11 @@
             </v-col>
             <v-col cols="6" style="margin:0; padding:2px" >
               <div class="contents_sub-title">반출</div>
+              <div class="contents_comment  contents_sub">
+                <ul class="contents_comment-ul">
+                  <li>문서를 반출 할수 있는 권한 입니다.</li>
+                </ul>
+              </div>
               <v-switch
                 v-model="switch8"
                  inset 
@@ -354,7 +374,29 @@
               </v-switch>
             </v-col>
             <v-col cols="6" style="margin:0; padding:2px">
+              <div class="contents_sub-title">출력</div>
+              <div class="contents_comment  contents_sub">
+                <ul class="contents_comment-ul">
+                  <li>문서의 출력 가능 여부를 제어하는 권한 입니다. 미사용시 출력이 제한됩니다.</li>
+                </ul>
+              </div>
+              <v-switch
+                v-model="switch9"
+                 inset 
+                hide-details                
+                class="v-switch-style"
+              >
+                <template v-slot:label v-if="switch9 === true"><span style="color: #000">사용</span></template>
+                <template v-slot:label v-else><span>미사용</span></template>
+              </v-switch>
+            </v-col>
+            <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title">마킹</div>
+              <div class="contents_comment  contents_sub">
+                <ul class="contents_comment-ul">
+                  <li>문서 출력시 프린트 마킹기능의 사용 유무를 결정합니다.</li>
+                </ul>
+              </div>
               <v-switch
                 v-model="switch9"
                  inset 
@@ -367,6 +409,11 @@
             </v-col>
             <v-col cols="6" style="margin:0; padding:2px">
               <div class="contents_sub-title">권한변경</div>
+              <div class="contents_comment  contents_sub">
+                <ul class="contents_comment-ul">
+                  <li>지정된 생성자 권한을 변경할 수 있는 권한 입니다.</li>
+                </ul>
+              </div>
               <v-switch
                 v-model="switch10"
                  inset 
@@ -914,7 +961,7 @@
 }
 .v-switch-style {
   padding:10px 10px;
-  margin-top: 10px !important;
+  margin-top: 5px !important;
 }
 .v-main__wrap{
   background-color: #F9FBFD;
@@ -923,6 +970,11 @@
   list-style: none;
   padding-left: 0px !important;
 }
+
+.contents_sub{
+ padding-left: 10px; 
+}
+
 .contents_sub-title{
  padding-left: 10px;
  font-weight:bold;
