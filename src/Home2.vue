@@ -154,7 +154,12 @@
                       <v-list-item>
                         <v-list-item-content style="font-size:1.4rem; font-weight:bold ">
                           <v-row align="center" justify="space-around">
-                            <v-col cols="8">암호화 가능 범주</v-col>
+                            <v-col cols="8">
+                              <v-tooltip bottom>
+                                <template v-slot:activator="{ on, attrs }">암호화 가능 범주<v-icon  color="#47B8F5" v-bind="attrs" v-on="on" right style="padding-bottom:8px;">mdi-alert-circle-outline</v-icon></template>
+                                <span>범주 보안 문서 생성 시 사용 가능한 범주 정책</span>
+                              </v-tooltip>
+                          </v-col>
                             <v-col cols="4" align="right" justify="space-around">  
                               <v-dialog v-model="dialog"  max-width="800" >
                                 <template v-slot:activator="{ on, attrs }"><v-btn color="success" v-bind="attrs" v-on="on"><v-icon left>mdi-pencil</v-icon>edit</v-btn></template>
@@ -262,7 +267,12 @@
                     <v-list-item>
                       <v-list-item-content style="font-size:1.4rem; font-weight:bold">
                           <v-row align="center" justify="space-around" >
-                            <v-col cols="8">접근대상 지정 그룹</v-col>
+                            <v-col cols="8">
+                              <v-tooltip bottom>
+                                <template v-slot:activator="{ on, attrs }">접근대상 지정 그룹<v-icon  color="#47B8F5" v-bind="attrs" v-on="on" right style="padding-bottom:8px;">mdi-alert-circle-outline</v-icon></template>
+                                <span>접근 대상자를 지정하여 문서 암호화 시 선택 가능한 그룹</span>
+                              </v-tooltip>
+                            </v-col>
                             <v-col cols="4" align="right" justify="space-around">
                               <!-- <v-dialog v-model="dialog2" persistent max-width="800">
                                 <template v-slot:activator="{ on, attrs }">
