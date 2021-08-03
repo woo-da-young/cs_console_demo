@@ -165,10 +165,12 @@
               <!-- <v-divider style="height:5px"></v-divider> -->
               <v-row style="border-bottom: 1px solid #ccc;">
                 <v-col cols="1" style="padding: 0;">
-                  <v-btn text width="100%" style="display:block" disabled ><v-icon left>mdi-pencil</v-icon>수정</v-btn>
+                  <v-btn text width="100%" style="display:block" v-if="select" ><v-icon left>mdi-pencil</v-icon>수정</v-btn>
+                  <v-btn text width="100%" style="display:block" disabled v-if="!select"><v-icon left>mdi-pencil</v-icon>수정</v-btn>
                 </v-col>
                 <v-col cols="1" style="padding: 0">
-                  <v-btn text width="100%" style="display:block" ><v-icon left>mdi-close</v-icon>취소</v-btn>
+                  <v-btn text width="100%" style="display:block" v-if="select"><v-icon left>mdi-close</v-icon>취소</v-btn>
+                  <v-btn text width="100%" style="display:block" disabled v-if="!select"><v-icon left>mdi-close</v-icon>취소</v-btn>
                 </v-col>
               </v-row>
             </v-col>
@@ -192,9 +194,13 @@
               
               <v-select
                 :items="selectList"
+                v-model="select"
+                item-text="text"
+                item-value="value"
                 dense
                 hide-details
                 class="v-select-style"
+                
               ></v-select>
             </v-col>
             <v-col  cols="6" >
@@ -618,7 +624,16 @@
           },
         ],
         group:'',
-        selectList: ['문서편집기 저장시(MS 오피스만 지원)', '문서편집기 종료시'],
+        selectList: [
+          {
+            text: '문서편집기 저장시(MS 오피스만 지원)',
+            value: '1'
+          }, 
+          {
+            text: '문서편집기 종료시',
+            value: '2'
+          }
+        ],
         selectList2: ['활성화', '비활성화', '감춤', '비활성화(체크)', '비활성화(언체크)', '감춤(체크)', '감춤(언체크)'],
         switch1:false,
         switch2:false,
@@ -650,7 +665,9 @@
       dialog2 : false,
       listOn: 1,
       subListOn: 1,
-      tooltip1: false
+      tooltip1: false,
+      disabledBtn: false,
+      select: null
       }
     },
   }
